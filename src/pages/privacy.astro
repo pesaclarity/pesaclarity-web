@@ -1,0 +1,137 @@
+---
+import Base from "../layouts/Base.astro";
+import { links } from "../data/site";
+
+const updated = "26 October 2026";
+---
+
+<Base
+  title="Privacy summary (draft)"
+  description="A plain-language summary of what Pesa Clarity keeps on your phone, what its server holds, and your rights. Draft, pending legal review."
+>
+  <article class="container privacy-page">
+    <div class="prose">
+      <p class="eyebrow">Privacy</p>
+      <h1>Privacy summary</h1>
+
+      <div class="draft-banner" role="note">
+        <p>
+          <strong>Draft, pending legal review.</strong> This is a plain-language
+          summary of the privacy design in the{" "}
+          <a href={links.specPrivacy}>product spec</a>. It is not yet the
+          privacy policy. The full policy will be reviewed by a Kenyan data
+          protection lawyer before the app launches, and may change.
+        </p>
+        <p class="muted">Last updated {updated}.</p>
+      </div>
+
+      <h2>The short version</h2>
+      <p>
+        Pesa Clarity works out your budget on your phone. Your transactions,
+        messages and statements never leave it. Our server does three narrow
+        jobs and never sees a transaction.
+      </p>
+
+      <h2>What stays on your phone</h2>
+      <ul>
+        <li>
+          Messages from the banks and wallets you choose. Messages from every
+          other sender are ignored and never stored.
+        </li>
+        <li>
+          The fields read from those messages: amount, date, payee, balance and
+          fee. The raw message text is discarded after reading.
+        </li>
+        <li>
+          Statement PDFs. Their passwords are used once, in memory, then
+          discarded. PDFs are never uploaded.
+        </li>
+        <li>Budgets, debts, goals, payees, categories and every insight.</li>
+      </ul>
+      <p>
+        All of this sits in an encrypted database. The key is held by your
+        phone's secure hardware and released only after you unlock the app with
+        your PIN or fingerprint.
+      </p>
+
+      <h2>What our server holds</h2>
+      <dl>
+        <dt>Sign-in</dt>
+        <dd>
+          Your account id, the phone number or email you sign in with, and when
+          you signed up, in and out. You can also use the app without an
+          account.
+        </dd>
+        <dt>Encrypted backups</dt>
+        <dd>
+          If you choose our vault, backups are encrypted on your phone with your
+          passphrase before upload. We hold only the encrypted file and cannot
+          read it. You can back up to your own Google Drive, your phone or an SD
+          card instead.
+        </dd>
+        <dt>Model updates</dt>
+        <dd>
+          If "improve the app" is on, your phone sends clipped, noised updates
+          to the categoriser, combined with other users' before we can see them.
+          Never your transactions. You can switch this off at any time.
+        </dd>
+      </dl>
+
+      <h2>Your choices</h2>
+      <p>The app asks on first run, and you can change these any time:</p>
+      <ul>
+        <li>Improve the app (federated updates): on by default.</li>
+        <li>Contribute to licensed models: off unless you opt in.</li>
+        <li>Anonymous crash reports: off unless you opt in.</li>
+      </ul>
+      <p>Pesa Clarity has no ads, no analytics and no third-party trackers.</p>
+
+      <h2>Your rights</h2>
+      <p>
+        Under the Kenya Data Protection Act 2019 you can ask to see, correct or
+        delete the data we hold about you, and object to automated decisions. We
+        will answer within 30 days. You can delete your account from inside the
+        app.
+      </p>
+
+      <h2>This website</h2>
+      <p>
+        This site sets no cookies, runs no analytics and loads nothing from
+        other servers. Fonts are served from this site. The web host may keep
+        standard request logs, such as IP address and time, for security.
+      </p>
+
+      <h2>Questions</h2>
+      <p>
+        {/* TODO: add the data protection contact once the controller is registered with the ODPC. */}
+        A contact for privacy requests will be published with the full policy.
+        Until then, ask in public on <a href={links.github}>GitHub</a>, or
+        report a security issue privately using the security policy there.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .privacy-page {
+    padding-block: var(--space-7) var(--space-8);
+  }
+
+  h2 {
+    margin-top: var(--space-6);
+  }
+
+  .draft-banner p:last-child {
+    margin: 0;
+  }
+
+  dt {
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-top: var(--space-4);
+  }
+
+  dd {
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,641 @@
+---
+import Base from "../layouts/Base.astro";
+import { links, principles, repos, repoUrl } from "../data/site";
+---
+
+<Base>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Free · No ads · Open source</p>
+        <h1 id="hero-title">
+          Your money, made clear, without giving your data away.
+        </h1>
+        <p class="lead">
+          Pesa Clarity reads your M-Pesa and bank messages on your phone and
+          turns them into a daily plan: what you can spend today, what is due,
+          where money leaks, and when you will be debt-free.
+        </p>
+        <div class="button-row">
+          <a class="button button-primary" href={links.waitlist}>
+            Join the beta waitlist
+          </a>
+          <a class="button button-secondary" href={links.github}>
+            See the code on GitHub
+          </a>
+        </div>
+        <p class="status muted">
+          Status: pre-alpha. We are talking to users and building the parsers.
+          Nothing to install yet.
+        </p>
+      </div>
+
+      <figure class="phone" aria-labelledby="phone-caption">
+        <div class="phone-screen">
+          <div class="today">
+            <p class="today-label">Safe to spend today</p>
+            <p class="today-amount number">
+              <span class="currency">KES</span> 1,200
+            </p>
+            <p class="today-note">Weekday limit · 3,450 left this week</p>
+          </div>
+          <ul class="mini-list">
+            <li>
+              <span>Rent, due Friday</span>
+              <span class="number">18,000</span>
+              <span class="tag tag-ok">Covered</span>
+            </li>
+            <li>
+              <span>Leaks this month</span>
+              <span class="number">6,400</span>
+              <span class="tag">9% of income</span>
+            </li>
+            <li>
+              <span>Debt-free by</span>
+              <span class="number">Aug 2028</span>
+              <span class="tag">On track</span>
+            </li>
+          </ul>
+        </div>
+        <figcaption id="phone-caption" class="muted">
+          How the home screen answers "how am I doing today?". Figures are
+          illustrative.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="what" class="section" aria-labelledby="what-title">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">What it is</p>
+        <h2 id="what-title">One number first. Detail one tap deeper.</h2>
+        <p>
+          You can see every M-Pesa transaction, but not your finances. Pesa
+          Clarity does the sorting for you, on the phone, and answers four
+          questions in plain words.
+        </p>
+      </div>
+      <ul class="grid answers" role="list">
+        <li class="card">
+          <h3>What can I spend today?</h3>
+          <p>
+            "You can spend 1,200 today." A daily limit from what is left of your
+            budget, with a different one for weekends.
+          </p>
+        </li>
+        <li class="card">
+          <h3>What is coming up?</h3>
+          <p>
+            Rent, school fees, card charges and loan payments, with a warning
+            days before a payment would fail.
+          </p>
+        </li>
+        <li class="card">
+          <h3>Where does my money leak?</h3>
+          <p>
+            Fees, Fuliza, lifestyle and transfers to friends and family, as a
+            share of income, so small amounts stop hiding.
+          </p>
+        </li>
+        <li class="card">
+          <h3>When will I be debt-free?</h3>
+          <p>
+            Bank loans, Fuliza and family loans in one plan, with a realistic
+            date and a split for each payday.
+          </p>
+        </li>
+      </ul>
+      <div class="how card">
+        <h3>How it gets your numbers</h3>
+        <p>
+          You tick the banks and wallets you use, such as M-Pesa, KCB or Equity.
+          The app reads messages from those senders only, on your phone, and
+          ignores everything else. No bank logins, no passwords, no connection
+          to any bank's systems. Statement PDFs fill in older history and check
+          that the totals match.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="beliefs" class="section" aria-labelledby="beliefs-title">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">What we believe</p>
+        <h2 id="beliefs-title">Five commitments behind every decision</h2>
+        <p>
+          These come straight from the product spec, and they do not change.
+        </p>
+      </div>
+      <ol class="principles" role="list">
+        {principles.map((p, i) => (
+          <li class="card principle">
+            <span class="principle-number number" aria-hidden="true">
+              {i + 1}
+            </span>
+            <div>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="privacy" class="section" aria-labelledby="privacy-title">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Privacy promise</p>
+        <h2 id="privacy-title">Your transactions never leave your phone</h2>
+        <p>
+          Here is exactly what stays with you and what our server holds. Nothing
+          else.
+        </p>
+      </div>
+      <div class="privacy-split">
+        <div class="card">
+          <h3>Stays on your phone</h3>
+          <ul class="check-list">
+            <li>Your messages, transactions, payees and balances</li>
+            <li>Statement PDFs and their passwords, used once and discarded</li>
+            <li>Budgets, debts, goals and every insight</li>
+            <li>The categoriser that learns from your corrections</li>
+          </ul>
+          <p class="muted small">
+            All stored in an encrypted database, unlocked by your PIN or
+            fingerprint.
+          </p>
+        </div>
+        <div class="card">
+          <h3>What our server holds</h3>
+          <dl class="server-list">
+            <div>
+              <dt>Sign-in</dt>
+              <dd>
+                Your account id, phone number or email, and when you signed in
+                or out. No financial data. You can also use the app without an
+                account.
+              </dd>
+            </div>
+            <div>
+              <dt>Backup vault</dt>
+              <dd>
+                Backups encrypted on your phone with your passphrase. We cannot
+                read them, and a lost passphrase means a lost backup, so you get
+                a printable recovery key.
+              </dd>
+            </div>
+            <div>
+              <dt>Model updates</dt>
+              <dd>
+                Noised, combined updates that help the categoriser improve for
+                everyone. Never your data. You can switch this off.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      <p class="privacy-foot">
+        No ads, no analytics, no third-party trackers, in the app or on this
+        site. <a href="/privacy/">Read the privacy summary</a>.
+      </p>
+    </div>
+  </section>
+
+  <section id="open-source" class="section" aria-labelledby="foss-title">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Open source for good</p>
+        <h2 id="foss-title">Don't trust us. Check the code.</h2>
+        <p>
+          An app that reads your money messages should prove what it does with
+          them. Every part of Pesa Clarity is open source, so anyone can confirm
+          that your data stays on your phone.
+        </p>
+      </div>
+
+      <div class="table-wrap card">
+        <table>
+          <caption class="visually-hidden">
+            Pesa Clarity repositories and their licences
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Repository</th>
+              <th scope="col">What it holds</th>
+              <th scope="col">Licence</th>
+            </tr>
+          </thead>
+          <tbody>
+            {repos.map((r) => (
+              <tr>
+                <th scope="row">
+                  <a href={repoUrl(r.name)}>{r.name}</a>
+                  {r.codename && (
+                    <span class="codename muted">{r.codename}</span>
+                  )}
+                </th>
+                <td>{r.what}</td>
+                <td>{r.licence}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid why">
+        <div>
+          <h3>Why AGPL for the app and server</h3>
+          <p>
+            Anyone who changes them, including to run a hosted copy, must share
+            their changes. A commercial licence is available on request, which
+            can help fund the project.
+          </p>
+        </div>
+        <div>
+          <h3>Why Apache for the parsers</h3>
+          <p>
+            So banks, SACCOs, fintechs and other apps can use them freely. More
+            users means more people keeping them current.
+          </p>
+        </div>
+        <div>
+          <h3>Why the name is protected</h3>
+          <p>
+            The code can be forked, but the Pesa Clarity name and logo cannot.
+            That stops scam clones posing as the real app to harvest SMS.
+          </p>
+        </div>
+      </div>
+
+      <div class="card contribute">
+        <h3>Add your bank or wallet</h3>
+        <p>
+          Each institution's messages are read by a parser pack: a small set of
+          rules with tests. If your bank, SACCO or wallet is missing, you can
+          add it.
+        </p>
+        <ol>
+          <li>
+            Open an issue on <a href={links.parserIssues}>ujumbe-parsers</a>{" "}
+            naming the institution and its SMS sender ID.
+          </li>
+          <li>
+            Write the pack's rules in YAML, one per message type: sent,
+            received, paybill, till, reversal.
+          </li>
+          <li>
+            Add test messages for each rule. Make them up, with fake names and
+            numbers like 0700 000 000. Never paste real messages.
+          </li>
+          <li>Open a pull request. A pack is merged when every test passes.</li>
+        </ol>
+        <a class="button button-secondary" href={links.parserContributing}>
+          Read the parser guide
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="section join" aria-labelledby="join-title">
+    <div class="container join-inner">
+      <h2 id="join-title">Help build it</h2>
+      <p class="lead">
+        The private beta opens to 30 to 50 people in Kenya once the Android app
+        passes Play review. Leave a note on the waitlist and we will tell you
+        when it is ready.
+      </p>
+      <div class="button-row">
+        <a class="button button-primary" href={links.waitlist}>
+          Join the beta waitlist
+        </a>
+        <a class="button button-secondary" href={links.github}>
+          Star or contribute on GitHub
+        </a>
+      </div>
+      <p class="muted small">
+        New to open source? Start with the{" "}
+        <a href={links.contributing}>contributing guide</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-block: var(--space-7) var(--space-8);
+  }
+
+  .hero-inner {
+    display: grid;
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  @media (min-width: 60rem) {
+    .hero-inner {
+      grid-template-columns: 1.25fr 1fr;
+    }
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    max-width: 38rem;
+  }
+
+  .status {
+    font-size: var(--text-sm);
+    margin-top: var(--space-4);
+  }
+
+  .phone {
+    margin: 0;
+    justify-self: center;
+    width: min(100%, 22rem);
+  }
+
+  .phone-screen {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 36px;
+    padding: var(--space-4);
+    box-shadow: 0 24px 48px -24px rgb(28 18 21 / 0.25);
+  }
+
+  .today {
+    background: var(--color-brand);
+    color: var(--color-on-brand);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+  }
+
+  .today p {
+    margin: 0;
+  }
+
+  .today-label {
+    font-weight: 600;
+  }
+
+  .today-amount {
+    font-size: var(--text-number);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-block: var(--space-2) !important;
+  }
+
+  .currency {
+    font-size: 0.4em;
+    font-weight: 500;
+    letter-spacing: 0;
+    vertical-align: 0.9em;
+  }
+
+  .today-note {
+    font-size: var(--text-sm);
+  }
+
+  .mini-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-3) 0 0;
+  }
+
+  .mini-list li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 var(--space-3);
+    padding: var(--space-3) var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--text-sm);
+  }
+
+  .mini-list li:last-child {
+    border-bottom: 0;
+  }
+
+  .mini-list .number {
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .tag {
+    grid-column: 1 / -1;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+  }
+
+  .tag-ok {
+    color: var(--color-success-text);
+    font-weight: 600;
+  }
+
+  .phone figcaption {
+    font-size: var(--text-sm);
+    text-align: center;
+    margin-top: var(--space-3);
+  }
+
+  .answers {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+  }
+
+  .answers p,
+  .principle p,
+  .why p {
+    margin: 0;
+  }
+
+  .how p {
+    margin: 0;
+    max-width: 52rem;
+  }
+
+  .principles {
+    display: grid;
+    gap: var(--space-4);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  }
+
+  .principle {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  .principle h3 {
+    margin-bottom: var(--space-2);
+  }
+
+  .principle-number {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-brand-soft);
+    color: var(--color-brand-link);
+    font-weight: 700;
+    font-size: var(--text-lg);
+  }
+
+  .privacy-split {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 52rem) {
+    .privacy-split {
+      grid-template-columns: 1fr 1.2fr;
+    }
+  }
+
+  .check-list {
+    padding-left: 1.25rem;
+  }
+
+  .check-list li {
+    margin-bottom: var(--space-2);
+  }
+
+  .check-list li::marker {
+    content: "✓  ";
+    color: var(--color-success-text);
+    font-weight: 700;
+  }
+
+  .small {
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+
+  .server-list {
+    margin: 0;
+  }
+
+  .server-list div + div {
+    margin-top: var(--space-4);
+  }
+
+  dt {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  .privacy-foot {
+    margin: var(--space-5) 0 0;
+  }
+
+  .table-wrap {
+    padding: 0;
+    overflow-x: auto;
+    margin-bottom: var(--space-6);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+
+  thead th {
+    font-family: var(--font-display);
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  tbody th {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .codename {
+    display: block;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  @media (max-width: 40rem) {
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: block;
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    tbody tr:last-child {
+      border-bottom: 0;
+    }
+
+    th,
+    td {
+      display: block;
+      padding: 0;
+      border: 0;
+    }
+
+    td + td {
+      color: var(--color-text-muted);
+    }
+  }
+
+  .why {
+    margin-bottom: var(--space-6);
+  }
+
+  .contribute ol {
+    padding-left: 1.4rem;
+    max-width: var(--width-prose);
+  }
+
+  .contribute li {
+    margin-bottom: var(--space-2);
+  }
+
+  .join {
+    background: var(--color-brand-soft);
+  }
+
+  .join-inner {
+    text-align: center;
+    display: grid;
+    justify-items: center;
+  }
+
+  .join .lead {
+    margin-inline: auto;
+  }
+
+  .join .button-row {
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+</style>
