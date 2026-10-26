@@ -1,0 +1,117 @@
+---
+import Mark from "./Mark.astro";
+import { links } from "../data/site";
+
+interface Props {
+  onHome: boolean;
+}
+const { onHome } = Astro.props;
+const base = onHome ? "" : "/";
+const nav = [
+  { href: `${base}#what`, label: "What it is" },
+  { href: `${base}#beliefs`, label: "Beliefs" },
+  { href: `${base}#privacy`, label: "Privacy" },
+  { href: `${base}#open-source`, label: "Open source" },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Pesa Clarity home">
+      <Mark size={36} />
+      <span class="wordmark" aria-hidden="true">
+        pesa<span>clarity</span>
+      </span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-list">
+        {nav.map((item) => (
+          <li class="nav-section">
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
+        <li>
+          <a class="button button-primary nav-cta" href={links.waitlist}>
+            Join the beta
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-background);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 4.5rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--size-touch-target);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.03em;
+  }
+
+  .wordmark span {
+    color: var(--color-brand);
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-section a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--size-touch-target);
+    padding-inline: var(--space-3);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: var(--radius-pill);
+  }
+
+  .nav-section a:hover {
+    background: var(--color-brand-soft);
+  }
+
+  .nav-cta {
+    margin-left: var(--space-2);
+    padding-inline: var(--space-4);
+  }
+
+  @media (max-width: 52rem) {
+    .nav-section {
+      display: none;
+    }
+  }
+
+  @media (max-width: 22rem) {
+    .wordmark {
+      display: none;
+    }
+  }
+</style>

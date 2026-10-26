@@ -1,0 +1,74 @@
+/*
+ * Design tokens. Source: pesaclarity/docs brand/tokens.json and BRAND.md.
+ * This is the only file that defines colours, type, radii and sizes.
+ * Dark values not in tokens.json (border, brandSoft, brandLink, success text, focus) are
+ * derived here and checked for contrast against the dark surface and background.
+ */
+:root {
+  color-scheme: light dark;
+
+  --color-brand: #c8102e;
+  --color-on-brand: #ffffff;
+  --color-brand-link: #b81d2f;
+  --color-brand-soft: #fdecee;
+  --color-background: #fbf8f8;
+  --color-surface: #ffffff;
+  --color-border: #efe6e7;
+  --color-text: #1c1215;
+  --color-text-muted: #6f6064;
+  --color-success: #059669;
+  --color-success-text: #047857;
+  --color-warning: #b45309;
+  --color-focus: #b81d2f;
+
+  /* The logo mark is never recoloured, so it keeps its own token. */
+  --color-mark: #c8102e;
+  --color-on-mark: #ffffff;
+
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body:
+    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius-card: 24px;
+  --radius-small: 12px;
+  --radius-pill: 999px;
+  --size-touch-target: 44px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --text-2xl: clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem);
+  --text-number: clamp(3rem, 2.2rem + 3vw, 4.25rem);
+
+  --width-content: 72rem;
+  --width-prose: 42rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-brand: #ff6b7a;
+    --color-on-brand: #1a1214;
+    --color-brand-link: #ff8592;
+    --color-brand-soft: #3a1d23;
+    --color-background: #1a1214;
+    --color-surface: #251b1e;
+    --color-border: #3d2e32;
+    --color-text: #ede4e6;
+    --color-text-muted: #b3a5a9;
+    --color-success: #34d399;
+    --color-success-text: #6ee7b7;
+    --color-warning: #fbbf24;
+    --color-focus: #ff8592;
+  }
+}
