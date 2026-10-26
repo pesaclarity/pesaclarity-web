@@ -12,13 +12,12 @@ export const site = {
 
 export const links = {
   github: org,
-  // TODO: replace with the real waitlist (form or address) before launch.
-  // Until then, people register interest in GitHub Discussions on the org.
-  waitlist: `${org}/.github/discussions`,
+  // A GitHub issue form on this public repo until a non-GitHub waitlist exists.
+  waitlist: `${org}/pesaclarity-web/issues/new?template=beta-waitlist.yml`,
   spec: `${org}/docs/blob/main/spec/PRODUCT-SPEC.md`,
   specPrivacy: `${org}/docs/blob/main/spec/PRODUCT-SPEC.md#architecture-privacy-and-data-model`,
   brand: `${org}/docs/blob/main/BRAND.md`,
-  contributing: `${org}/.github/blob/main/CONTRIBUTING.md`,
+  contributing: `${org}/pesaclarity-web/blob/main/CONTRIBUTING.md`,
   parserContributing: `${org}/ujumbe-parsers/blob/main/CONTRIBUTING.md`,
   parserIssues: `${org}/ujumbe-parsers/issues`,
   webSource: `${org}/pesaclarity-web`,
@@ -58,43 +57,54 @@ export interface Repo {
   codename?: string;
   what: string;
   licence: string;
+  /** Private repos are listed without a link until they are published. */
+  public: boolean;
 }
 
 export const repos: readonly Repo[] = [
   {
     name: "pesaclarity-app",
+    public: false,
     what: "The Flutter Android app and its on-phone engine",
     licence: "AGPL-3.0",
   },
   {
     name: "ujumbe-parsers",
+    public: true,
     codename: "ujumbe",
     what: "SMS parser packs per bank and wallet, with synthetic test fixtures",
     licence: "Apache-2.0",
   },
   {
     name: "pesaclarity-backend",
+    public: false,
     codename: "ngome",
     what: "Sign-in, the encrypted backup vault and federated-learning aggregation",
     licence: "AGPL-3.0",
   },
   {
     name: "pesaclarity-ml",
+    public: false,
     codename: "akili",
     what: "On-phone categoriser training, privacy settings and audits",
     licence: "AGPL-3.0 (code); weights under a separate model licence",
   },
   {
     name: "pesaclarity-web",
+    public: true,
     codename: "dirisha",
     what: "This website",
     licence: "AGPL-3.0 (code), CC BY 4.0 (text and images)",
   },
   {
     name: "docs",
+    public: false,
     what: "Product spec, brand guide and decisions",
     licence: "CC BY 4.0",
   },
 ];
+
+/** The product spec lives in the docs repo; link to it only once that is public. */
+export const specPublic = repos.find((r) => r.name === "docs")?.public ?? false;
 
 export const repoUrl = (name: string): string => `${org}/${name}`;

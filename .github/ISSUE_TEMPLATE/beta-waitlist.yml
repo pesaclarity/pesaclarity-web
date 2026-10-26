@@ -1,0 +1,37 @@
+name: Join the beta waitlist
+description: Ask to be told when the private Android beta opens.
+title: "Beta waitlist: "
+labels: [beta-waitlist]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue is public. Do not add your phone number, email or any financial details.
+        We will reply here when the beta opens, so keep notifications on for this issue.
+  - type: dropdown
+    id: phone
+    attributes:
+      label: Your phone
+      options:
+        - Android 10 or newer
+        - Android 9 or older
+        - iPhone (not supported yet)
+    validations:
+      required: true
+  - type: checkboxes
+    id: institutions
+    attributes:
+      label: Which do you use?
+      options:
+        - label: M-Pesa
+        - label: Fuliza
+        - label: Equity
+        - label: KCB
+        - label: Co-operative Bank
+        - label: I&M
+        - label: NCBA
+        - label: A SACCO
+  - type: textarea
+    id: hope
+    attributes:
+      label: What would you most like the app to help with? (optional)

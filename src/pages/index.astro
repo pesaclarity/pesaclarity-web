@@ -8,9 +8,10 @@ import { links, principles, repos, repoUrl } from "../data/site";
   <section class="hero" aria-labelledby="hero-title">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow">Free · No ads · Open source</p>
+        <p class="pill">Free · No ads · Open source</p>
         <h1 id="hero-title">
-          Your money, made clear, without giving your data away.
+          Your money, made clear,{" "}
+          <span class="accent">without giving your data away.</span>
         </h1>
         <p class="lead">
           Pesa Clarity reads your M-Pesa and bank messages on your phone and
@@ -25,22 +26,32 @@ import { links, principles, repos, repoUrl } from "../data/site";
             See the code on GitHub
           </a>
         </div>
-        <p class="status muted">
-          Status: pre-alpha. We are talking to users and building the parsers.
-          Nothing to install yet.
-        </p>
+        <ul class="trust" role="list">
+          <li>No bank logins</li>
+          <li>Nothing leaves your phone</li>
+          <li>Open-source licences</li>
+        </ul>
       </div>
 
-      <figure class="phone" aria-labelledby="phone-caption">
-        <div class="phone-screen">
+      <figure class="showcase" aria-labelledby="phone-caption">
+        <div class="phone">
+          <div class="phone-bar" aria-hidden="true">
+            <span>9:41</span>
+            <span class="notch"></span>
+            <span>●●●</span>
+          </div>
+          <p class="phone-greet">Habari, Wanjiru</p>
           <div class="today">
             <p class="today-label">Safe to spend today</p>
             <p class="today-amount number">
               <span class="currency">KES</span> 1,200
             </p>
             <p class="today-note">Weekday limit · 3,450 left this week</p>
+            <div class="meter" aria-hidden="true">
+              <span></span>
+            </div>
           </div>
-          <ul class="mini-list">
+          <ul class="mini-list" role="list">
             <li>
               <span>Rent, due Friday</span>
               <span class="number">18,000</span>
@@ -58,48 +69,159 @@ import { links, principles, repos, repoUrl } from "../data/site";
             </li>
           </ul>
         </div>
-        <figcaption id="phone-caption" class="muted">
-          How the home screen answers "how am I doing today?". Figures are
+
+        <div class="float float-sms" aria-hidden="true">
+          <p class="float-from">MPESA</p>
+          <p>
+            TK41X0ABCD Confirmed. Ksh450.00 paid to JAVA HOUSE. New M-PESA
+            balance is Ksh8,210.00.
+          </p>
+        </div>
+        <div class="float float-parsed" aria-hidden="true">
+          <span class="dot"></span>
+          <div>
+            <p class="float-title">Java House · Eating out</p>
+            <p class="float-sub">Read on your phone · 0 bytes uploaded</p>
+          </div>
+          <span class="number">−450</span>
+        </div>
+
+        <figcaption id="phone-caption" class="visually-hidden">
+          The home screen answers "how am I doing today?". Figures are
           illustrative.
         </figcaption>
       </figure>
     </div>
   </section>
 
+  <section class="stats" aria-label="Pesa Clarity in numbers">
+    <div class="container">
+      <dl class="stats-grid">
+        <div>
+          <dt>Price, for every feature</dt>
+          <dd class="number">KES 0</dd>
+        </div>
+        <div>
+          <dt>Ads, trackers or analytics</dt>
+          <dd class="number">None</dd>
+        </div>
+        <div>
+          <dt>Screens, replacing a 17-tab workbook</dt>
+          <dd class="number">7</dd>
+        </div>
+        <div>
+          <dt>Of the code open-source licensed</dt>
+          <dd class="number">100%</dd>
+        </div>
+      </dl>
+      <p class="status muted">
+        Status: pre-alpha. We are talking to users and building the parsers.
+        Nothing to install yet. Figures on this page are illustrative.
+      </p>
+    </div>
+  </section>
+
   <section id="what" class="section" aria-labelledby="what-title">
     <div class="container">
-      <div class="section-intro">
-        <p class="eyebrow">What it is</p>
-        <h2 id="what-title">One number first. Detail one tap deeper.</h2>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What it is</p>
+          <h2 id="what-title">One number first. Detail one tap deeper.</h2>
+        </div>
         <p>
           You can see every M-Pesa transaction, but not your finances. Pesa
           Clarity does the sorting for you, on the phone, and answers four
           questions in plain words.
         </p>
       </div>
-      <ul class="grid answers" role="list">
-        <li class="card">
+
+      <ol class="steps" role="list" aria-label="How it gets your numbers">
+        <li>
+          <span class="step-n number">1</span>
+          <h3>Pick your senders</h3>
+          <p>
+            Tick the banks and wallets you use, such as M-Pesa, KCB or Equity.
+          </p>
+        </li>
+        <li>
+          <span class="step-n number">2</span>
+          <h3>Read on your phone</h3>
+          <p>
+            Only those senders' messages are read, on the device. No bank
+            logins, no passwords.
+          </p>
+        </li>
+        <li>
+          <span class="step-n number">3</span>
+          <h3>Get a daily plan</h3>
+          <p>
+            Statement PDFs fill in older history and check that the totals
+            match.
+          </p>
+        </li>
+      </ol>
+
+      <ul class="bento" role="list">
+        <li class="card q q-spend">
+          <div class="q-visual" aria-hidden="true">
+            <p class="big number">1,200</p>
+            <div class="week">
+              {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
+                <span class={i < 2 ? "done" : i === 2 ? "now" : ""}>{d}</span>
+              ))}
+            </div>
+          </div>
           <h3>What can I spend today?</h3>
           <p>
             "You can spend 1,200 today." A daily limit from what is left of your
             budget, with a different one for weekends.
           </p>
         </li>
-        <li class="card">
+        <li class="card q">
+          <ul class="q-visual upcoming" aria-hidden="true" role="list">
+            <li>
+              <span>School fees</span>
+              <span class="warn">in 3 days</span>
+            </li>
+            <li>
+              <span>Rent</span>
+              <span>Friday</span>
+            </li>
+            <li>
+              <span>Fuliza repay</span>
+              <span>28 Oct</span>
+            </li>
+          </ul>
           <h3>What is coming up?</h3>
           <p>
             Rent, school fees, card charges and loan payments, with a warning
             days before a payment would fail.
           </p>
         </li>
-        <li class="card">
+        <li class="card q">
+          <div class="q-visual bars" aria-hidden="true">
+            <span style="--w: 82%">Transfers</span>
+            <span style="--w: 58%">Lifestyle</span>
+            <span style="--w: 36%">Fuliza</span>
+            <span style="--w: 18%">Fees</span>
+          </div>
           <h3>Where does my money leak?</h3>
           <p>
             Fees, Fuliza, lifestyle and transfers to friends and family, as a
             share of income, so small amounts stop hiding.
           </p>
         </li>
-        <li class="card">
+        <li class="card q">
+          <div class="q-visual debt" aria-hidden="true">
+            <div class="debt-row">
+              <span>Paid off</span>
+              <span class="number">62%</span>
+            </div>
+            <div class="meter meter-soft">
+              <span style="--w: 62%"></span>
+            </div>
+            <p class="debt-date number">Aug 2028</p>
+          </div>
           <h3>When will I be debt-free?</h3>
           <p>
             Bank loans, Fuliza and family loans in one plan, with a realistic
@@ -107,69 +229,39 @@ import { links, principles, repos, repoUrl } from "../data/site";
           </p>
         </li>
       </ul>
-      <div class="how card">
-        <h3>How it gets your numbers</h3>
-        <p>
-          You tick the banks and wallets you use, such as M-Pesa, KCB or Equity.
-          The app reads messages from those senders only, on your phone, and
-          ignores everything else. No bank logins, no passwords, no connection
-          to any bank's systems. Statement PDFs fill in older history and check
-          that the totals match.
-        </p>
-      </div>
     </div>
   </section>
 
-  <section id="beliefs" class="section" aria-labelledby="beliefs-title">
+  <section id="privacy" class="section tinted" aria-labelledby="privacy-title">
     <div class="container">
-      <div class="section-intro">
-        <p class="eyebrow">What we believe</p>
-        <h2 id="beliefs-title">Five commitments behind every decision</h2>
-        <p>
-          These come straight from the product spec, and they do not change.
-        </p>
-      </div>
-      <ol class="principles" role="list">
-        {principles.map((p, i) => (
-          <li class="card principle">
-            <span class="principle-number number" aria-hidden="true">
-              {i + 1}
-            </span>
-            <div>
-              <h3>{p.title}</h3>
-              <p>{p.body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <section id="privacy" class="section" aria-labelledby="privacy-title">
-    <div class="container">
-      <div class="section-intro">
-        <p class="eyebrow">Privacy promise</p>
-        <h2 id="privacy-title">Your transactions never leave your phone</h2>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Privacy promise</p>
+          <h2 id="privacy-title">Your transactions never leave your phone</h2>
+        </div>
         <p>
           Here is exactly what stays with you and what our server holds. Nothing
           else.
         </p>
       </div>
       <div class="privacy-split">
-        <div class="card">
+        <div class="panel panel-phone">
           <h3>Stays on your phone</h3>
-          <ul class="check-list">
+          <ul class="check-list" role="list">
             <li>Your messages, transactions, payees and balances</li>
             <li>Statement PDFs and their passwords, used once and discarded</li>
             <li>Budgets, debts, goals and every insight</li>
             <li>The categoriser that learns from your corrections</li>
           </ul>
-          <p class="muted small">
-            All stored in an encrypted database, unlocked by your PIN or
+          <p class="small">
+            Stored in an encrypted database, unlocked by your PIN or
             fingerprint.
           </p>
         </div>
-        <div class="card">
+        <div class="wall" aria-hidden="true">
+          <span>Only this crosses</span>
+        </div>
+        <div class="panel">
           <h3>What our server holds</h3>
           <dl class="server-list">
             <div>
@@ -184,8 +276,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
               <dt>Backup vault</dt>
               <dd>
                 Backups encrypted on your phone with your passphrase. We cannot
-                read them, and a lost passphrase means a lost backup, so you get
-                a printable recovery key.
+                read them, so you get a printable recovery key.
               </dd>
             </div>
             <div>
@@ -205,128 +296,155 @@ import { links, principles, repos, repoUrl } from "../data/site";
     </div>
   </section>
 
+  <section id="beliefs" class="section" aria-labelledby="beliefs-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What we believe</p>
+          <h2 id="beliefs-title">Five commitments behind every decision</h2>
+        </div>
+        <p>
+          These come straight from the product spec, and they do not change.
+        </p>
+      </div>
+      <ol class="principles" role="list">
+        {principles.map((p, i) => (
+          <li class="card principle">
+            <span class="principle-number number" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
   <section id="open-source" class="section" aria-labelledby="foss-title">
     <div class="container">
-      <div class="section-intro">
-        <p class="eyebrow">Open source for good</p>
-        <h2 id="foss-title">Don't trust us. Check the code.</h2>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Open source for good</p>
+          <h2 id="foss-title">Don't trust us. Check the code.</h2>
+        </div>
         <p>
           An app that reads your money messages should prove what it does with
-          them. Every part of Pesa Clarity is open source, so anyone can confirm
-          that your data stays on your phone.
+          them. Every part of Pesa Clarity is open source. The parsers and this
+          site are public now; the app, server and models open before the beta,
+          so anyone can confirm that your data stays on your phone.
         </p>
       </div>
 
-      <div class="table-wrap card">
-        <table>
-          <caption class="visually-hidden">
-            Pesa Clarity repositories and their licences
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Repository</th>
-              <th scope="col">What it holds</th>
-              <th scope="col">Licence</th>
-            </tr>
-          </thead>
-          <tbody>
-            {repos.map((r) => (
-              <tr>
-                <th scope="row">
-                  <a href={repoUrl(r.name)}>{r.name}</a>
-                  {r.codename && (
-                    <span class="codename muted">{r.codename}</span>
-                  )}
-                </th>
-                <td>{r.what}</td>
-                <td>{r.licence}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <ul class="repos" role="list">
+        {repos.map((r) => (
+          <li class="card repo">
+            {r.public ? (
+              <a class="repo-name" href={repoUrl(r.name)}>
+                {r.name}
+              </a>
+            ) : (
+              <span class="repo-name">
+                {r.name} <span class="soon">Opens before the beta</span>
+              </span>
+            )}
+            <p>{r.what}</p>
+            <p class="licence">{r.licence}</p>
+          </li>
+        ))}
+      </ul>
 
-      <div class="grid why">
-        <div>
-          <h3>Why AGPL for the app and server</h3>
-          <p>
-            Anyone who changes them, including to run a hosted copy, must share
-            their changes. A commercial licence is available on request, which
-            can help fund the project.
-          </p>
+      <div class="foss-split">
+        <div class="why">
+          <div>
+            <h3>Why AGPL for the app and server</h3>
+            <p>
+              Anyone who changes them, including to run a hosted copy, must
+              share their changes. A commercial licence is available on request,
+              which can help fund the project.
+            </p>
+          </div>
+          <div>
+            <h3>Why Apache for the parsers</h3>
+            <p>
+              So banks, SACCOs, fintechs and other apps can use them freely.
+              More users means more people keeping them current.
+            </p>
+          </div>
+          <div>
+            <h3>Why the name is protected</h3>
+            <p>
+              The code can be forked, but the Pesa Clarity name and logo cannot.
+              That stops scam clones posing as the real app to harvest SMS.
+            </p>
+          </div>
         </div>
-        <div>
-          <h3>Why Apache for the parsers</h3>
-          <p>
-            So banks, SACCOs, fintechs and other apps can use them freely. More
-            users means more people keeping them current.
-          </p>
-        </div>
-        <div>
-          <h3>Why the name is protected</h3>
-          <p>
-            The code can be forked, but the Pesa Clarity name and logo cannot.
-            That stops scam clones posing as the real app to harvest SMS.
-          </p>
-        </div>
-      </div>
 
-      <div class="card contribute">
-        <h3>Add your bank or wallet</h3>
-        <p>
-          Each institution's messages are read by a parser pack: a small set of
-          rules with tests. If your bank, SACCO or wallet is missing, you can
-          add it.
-        </p>
-        <ol>
-          <li>
-            Open an issue on <a href={links.parserIssues}>ujumbe-parsers</a>{" "}
-            naming the institution and its SMS sender ID.
-          </li>
-          <li>
-            Write the pack's rules in YAML, one per message type: sent,
-            received, paybill, till, reversal.
-          </li>
-          <li>
-            Add test messages for each rule. Make them up, with fake names and
-            numbers like 0700 000 000. Never paste real messages.
-          </li>
-          <li>Open a pull request. A pack is merged when every test passes.</li>
-        </ol>
-        <a class="button button-secondary" href={links.parserContributing}>
-          Read the parser guide
-        </a>
+        <div class="card contribute">
+          <h3>Add your bank or wallet</h3>
+          <p>
+            Each institution's messages are read by a parser pack: a small set
+            of rules with tests. If yours is missing, you can add it.
+          </p>
+          <ol>
+            <li>
+              Open an issue on <a href={links.parserIssues}>ujumbe-parsers</a>{" "}
+              naming the institution and its SMS sender ID.
+            </li>
+            <li>
+              Write the pack's rules in YAML, one per message type: sent,
+              received, paybill, till, reversal.
+            </li>
+            <li>
+              Add made-up test messages with fake names and numbers like 0700
+              000 000. Never paste real messages.
+            </li>
+            <li>Open a pull request. It is merged when every test passes.</li>
+          </ol>
+          <a class="button button-secondary" href={links.parserContributing}>
+            Read the parser guide
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="join" class="section join" aria-labelledby="join-title">
+  <section id="join" class="join" aria-labelledby="join-title">
     <div class="container join-inner">
-      <h2 id="join-title">Help build it</h2>
-      <p class="lead">
-        The private beta opens to 30 to 50 people in Kenya once the Android app
-        passes Play review. Leave a note on the waitlist and we will tell you
-        when it is ready.
-      </p>
+      <div>
+        <h2 id="join-title">Help build it</h2>
+        <p>
+          The private beta opens to 30 to 50 people in Kenya once the Android
+          app passes Play review. Join the waitlist and we will tell you when it
+          is ready. New to open source? Start with the{" "}
+          <a href={links.contributing}>contributing guide</a>.
+        </p>
+      </div>
       <div class="button-row">
         <a class="button button-primary" href={links.waitlist}>
           Join the beta waitlist
         </a>
         <a class="button button-secondary" href={links.github}>
-          Star or contribute on GitHub
+          Star on GitHub
         </a>
       </div>
-      <p class="muted small">
-        New to open source? Start with the{" "}
-        <a href={links.contributing}>contributing guide</a>.
-      </p>
     </div>
   </section>
 </Base>
 
 <style>
+  /* Hero */
   .hero {
-    padding-block: var(--space-7) var(--space-8);
+    position: relative;
+    overflow: hidden;
+    padding-block: var(--space-7) var(--space-7);
+    background:
+      radial-gradient(
+        60rem 30rem at 85% 10%,
+        var(--color-brand-soft),
+        transparent 70%
+      ),
+      var(--color-background);
   }
 
   .hero-inner {
@@ -337,85 +455,172 @@ import { links, principles, repos, repoUrl } from "../data/site";
 
   @media (min-width: 60rem) {
     .hero-inner {
-      grid-template-columns: 1.25fr 1fr;
+      grid-template-columns: 1.15fr 1fr;
+      gap: var(--space-6);
     }
+  }
+
+  .pill {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-brand-link);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    padding: var(--space-1) var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+
+  h1 {
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    margin-bottom: var(--space-5);
+  }
+
+  .accent {
+    color: var(--color-brand-link);
   }
 
   .lead {
     font-size: var(--text-lg);
-    max-width: 38rem;
+    color: var(--color-text-muted);
+    max-width: 36rem;
+    margin-bottom: var(--space-6);
   }
 
-  .status {
+  .trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    list-style: none;
+    padding: 0;
+    margin: var(--space-6) 0 0;
     font-size: var(--text-sm);
-    margin-top: var(--space-4);
+    font-weight: 600;
+  }
+
+  .trust li::before {
+    content: "✓";
+    color: var(--color-success-text);
+    margin-right: var(--space-2);
+  }
+
+  .showcase {
+    position: relative;
+    margin: 0;
+    justify-self: center;
+    width: min(100%, 25rem);
+    padding-block: var(--space-5) var(--space-7);
   }
 
   .phone {
-    margin: 0;
-    justify-self: center;
-    width: min(100%, 22rem);
+    position: relative;
+    width: min(100%, 19.5rem);
+    margin-inline: auto;
+    background: var(--color-surface);
+    border: 10px solid var(--color-device);
+    border-radius: 44px;
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    box-shadow:
+      0 40px 80px -30px rgb(58 47 51 / 0.28),
+      0 0 0 1px rgb(58 47 51 / 0.08);
   }
 
-  .phone-screen {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 36px;
-    padding: var(--space-4);
-    box-shadow: 0 24px 48px -24px rgb(28 18 21 / 0.25);
+  .phone p {
+    margin: 0;
+  }
+
+  .phone-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0 var(--space-2) var(--space-3);
+  }
+
+  .notch {
+    width: 5rem;
+    height: 1.25rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-device);
+  }
+
+  .phone-greet {
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-bottom: var(--space-3) !important;
   }
 
   .today {
     background: var(--color-brand);
     color: var(--color-on-brand);
-    border-radius: var(--radius-card);
-    padding: var(--space-5);
-  }
-
-  .today p {
-    margin: 0;
+    border-radius: 20px;
+    padding: var(--space-4) var(--space-4) var(--space-5);
   }
 
   .today-label {
+    font-size: var(--text-sm);
     font-weight: 600;
   }
 
   .today-amount {
-    font-size: var(--text-number);
+    font-size: 3.25rem;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.05;
     letter-spacing: -0.03em;
-    margin-block: var(--space-2) !important;
+    margin-block: var(--space-1) !important;
   }
 
   .currency {
-    font-size: 0.4em;
+    font-size: 0.38em;
     font-weight: 500;
     letter-spacing: 0;
-    vertical-align: 0.9em;
+    vertical-align: 0.95em;
   }
 
   .today-note {
-    font-size: var(--text-sm);
+    font-size: 0.8125rem;
+  }
+
+  .meter {
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: rgb(255 255 255 / 0.3);
+    margin-top: var(--space-3);
+    overflow: hidden;
+  }
+
+  .meter span {
+    display: block;
+    height: 100%;
+    width: var(--w, 35%);
+    background: currentColor;
+    border-radius: inherit;
   }
 
   .mini-list {
     list-style: none;
     padding: 0;
-    margin: var(--space-3) 0 0;
+    margin: var(--space-2) 0 0;
   }
 
   .mini-list li {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 0 var(--space-3);
-    padding: var(--space-3) var(--space-2);
+    padding: var(--space-3) var(--space-1);
     border-bottom: 1px solid var(--color-border);
-    font-size: var(--text-sm);
+    font-size: 0.875rem;
   }
 
   .mini-list li:last-child {
     border-bottom: 0;
+    padding-bottom: 0;
   }
 
   .mini-list .number {
@@ -426,7 +631,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
   .tag {
     grid-column: 1 / -1;
     color: var(--color-text-muted);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .tag-ok {
@@ -434,89 +639,425 @@ import { links, principles, repos, repoUrl } from "../data/site";
     font-weight: 600;
   }
 
-  .phone figcaption {
-    font-size: var(--text-sm);
-    text-align: center;
-    margin-top: var(--space-3);
+  .float {
+    position: absolute;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px -18px rgb(58 47 51 / 0.22);
+    font-size: 0.8125rem;
+    line-height: 1.4;
   }
 
-  .answers {
+  .float p {
+    margin: 0;
+  }
+
+  .float-sms {
+    top: 2.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92%, 18.5rem);
+    padding: var(--space-3);
+    background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+    backdrop-filter: blur(6px);
+  }
+
+  .float-from {
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-1) !important;
+  }
+
+  .float-parsed {
+    bottom: -0.5rem;
+    right: -10%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    width: 17rem;
+  }
+
+  .float-parsed .number {
+    font-weight: 700;
+    margin-left: auto;
+  }
+
+  .float-title {
+    font-weight: 600;
+  }
+
+  .float-sub {
+    color: var(--color-success-text);
+    font-size: 0.75rem;
+  }
+
+  .dot {
+    flex: none;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--color-success);
+    box-shadow: 0 0 0 4px rgb(5 150 105 / 0.15);
+  }
+
+  @media (max-width: 40rem) {
+    .float-parsed {
+      right: 0;
+      width: 15.5rem;
+    }
+  }
+
+  /* Stats strip */
+  .stats {
+    background: var(--color-surface);
+    border-block: 1px solid var(--color-border);
+    padding-block: var(--space-6) var(--space-5);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5) var(--space-4);
+    margin: 0;
+  }
+
+  @media (min-width: 52rem) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stats-grid > div + div {
+      border-left: 1px solid var(--color-border);
+      padding-left: var(--space-5);
+    }
+  }
+
+  .stats-grid div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stats-grid dd {
+    order: -1;
+  }
+
+  .stats dd {
+    margin: 0;
+    font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-brand-link);
+  }
+
+  .stats dt {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .status {
+    font-size: var(--text-sm);
+    margin: var(--space-5) 0 0;
+  }
+
+  /* Section heads: title left, summary right */
+  .section-head {
+    display: grid;
+    gap: var(--space-3) var(--space-7);
+    margin-bottom: var(--space-6);
+    align-items: end;
+  }
+
+  .section-head h2 {
+    margin: 0;
+  }
+
+  .section-head > p {
+    margin: 0;
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 52rem) {
+    .section-head {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Steps */
+  .steps {
+    display: grid;
+    gap: var(--space-4);
     list-style: none;
     padding: 0;
     margin: 0 0 var(--space-4);
+    counter-reset: none;
   }
 
-  .answers p,
-  .principle p,
-  .why p {
+  @media (min-width: 52rem) {
+    .steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .steps li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 var(--space-4);
+    align-items: start;
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-card);
+    background: var(--color-brand-soft);
+  }
+
+  .steps h3,
+  .steps p {
+    grid-column: 2;
     margin: 0;
   }
 
-  .how p {
-    margin: 0;
-    max-width: 52rem;
+  .steps h3 {
+    font-size: var(--text-base);
   }
 
-  .principles {
+  .steps p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .step-n {
+    grid-row: span 2;
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: var(--color-brand);
+    color: var(--color-on-brand);
+    font-weight: 700;
+  }
+
+  /* Four questions */
+  .bento {
     display: grid;
     gap: var(--space-4);
+    list-style: none;
     padding: 0;
     margin: 0;
-    list-style: none;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
   }
 
-  .principle {
+  .q {
     display: flex;
-    gap: var(--space-4);
-    align-items: flex-start;
+    flex-direction: column;
   }
 
-  .principle h3 {
+  .q h3 {
     margin-bottom: var(--space-2);
   }
 
-  .principle-number {
-    flex: none;
-    display: grid;
-    place-items: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: var(--radius-pill);
+  .q > p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .q-visual {
+    min-height: 8.5rem;
+    margin: 0 0 var(--space-5);
+    padding: var(--space-4);
+    border-radius: var(--radius-small);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    font-size: 0.8125rem;
+  }
+
+  .big {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 0 0 var(--space-4);
+    color: var(--color-brand-link);
+  }
+
+  .week {
+    display: flex;
+    gap: var(--space-1);
+  }
+
+  .week span {
+    flex: 1;
+    text-align: center;
+    padding: var(--space-1) 0;
+    border-radius: 8px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .week .done {
     background: var(--color-brand-soft);
     color: var(--color-brand-link);
+  }
+
+  .week .now {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+    color: var(--color-on-brand);
+  }
+
+  .upcoming {
+    list-style: none;
+  }
+
+  .upcoming li {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .upcoming li:first-child {
+    padding-top: 0;
+  }
+
+  .upcoming li:last-child {
+    border-bottom: 0;
+  }
+
+  .warn {
+    color: var(--color-warning);
     font-weight: 700;
-    font-size: var(--text-lg);
+  }
+
+  .bars {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .bars span {
+    position: relative;
+    padding: 0.2rem var(--space-2);
+    font-weight: 600;
+    z-index: 0;
+  }
+
+  .bars span::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--w);
+    border-radius: 6px;
+    background: var(--color-brand-soft);
+    z-index: -1;
+  }
+
+  .debt-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+  }
+
+  .meter-soft {
+    background: var(--color-brand-soft);
+    height: 10px;
+    color: var(--color-brand);
+  }
+
+  .debt-date {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: var(--space-4) 0 0;
+  }
+
+  /* Privacy band */
+  .tinted {
+    background: var(--color-brand-soft);
+    border-top: 0;
   }
 
   .privacy-split {
     display: grid;
     gap: var(--space-4);
+    align-items: stretch;
   }
 
-  @media (min-width: 52rem) {
+  @media (min-width: 56rem) {
     .privacy-split {
-      grid-template-columns: 1fr 1.2fr;
+      grid-template-columns: 1fr auto 1fr;
     }
   }
 
+  .panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+  }
+
+  .panel-phone {
+    border-color: var(--color-success);
+  }
+
+  .panel h3 {
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+
   .check-list {
-    padding-left: 1.25rem;
+    list-style: none;
+    padding: 0;
   }
 
   .check-list li {
-    margin-bottom: var(--space-2);
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: var(--space-3);
   }
 
-  .check-list li::marker {
-    content: "✓  ";
+  .check-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
     color: var(--color-success-text);
     font-weight: 700;
   }
 
   .small {
     font-size: var(--text-sm);
+    color: var(--color-text-muted);
     margin: 0;
+  }
+
+  .wall {
+    display: grid;
+    place-items: center;
+  }
+
+  .wall span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-pill);
+    padding: var(--space-2) var(--space-3);
+  }
+
+  @media (min-width: 56rem) {
+    .wall span {
+      writing-mode: vertical-rl;
+      padding: var(--space-3) var(--space-2);
+    }
   }
 
   .server-list {
@@ -532,111 +1073,157 @@ import { links, principles, repos, repoUrl } from "../data/site";
     font-weight: 700;
   }
 
-  dd {
+  .server-list dd {
     margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
   }
 
   .privacy-foot {
     margin: var(--space-5) 0 0;
+    color: var(--color-text-muted);
   }
 
-  .table-wrap {
+  /* Beliefs */
+  .principles {
+    display: grid;
+    gap: var(--space-4);
     padding: 0;
-    overflow-x: auto;
-    margin-bottom: var(--space-6);
+    margin: 0;
+    list-style: none;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
+  .principle {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .principle h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-2);
+  }
+
+  .principle p {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .principle-number {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-brand-link);
+    margin-bottom: var(--space-3);
+  }
+
+  /* Open source */
+  .repos {
+    display: grid;
+    gap: var(--space-3);
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  }
+
+  .repo {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .repo p {
+    margin: 0;
     font-size: var(--text-sm);
   }
 
-  th,
-  td {
-    text-align: left;
-    vertical-align: top;
-    padding: var(--space-3) var(--space-4);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  tbody tr:last-child > * {
-    border-bottom: 0;
-  }
-
-  thead th {
+  .repo-name {
     font-family: var(--font-display);
-    color: var(--color-text-muted);
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: var(--space-1);
+  }
+
+  .soon {
+    font-family: var(--font-body);
     font-weight: 500;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    background: var(--color-brand-soft);
+    border-radius: var(--radius-pill);
+    padding: 0.1rem var(--space-2);
+    margin-left: var(--space-1);
   }
 
-  tbody th {
-    font-weight: 600;
-    white-space: nowrap;
+  .repo .licence {
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
   }
 
-  .codename {
-    display: block;
-    font-weight: 400;
-    font-style: italic;
+  .foss-split {
+    display: grid;
+    gap: var(--space-6);
+    align-items: start;
   }
 
-  @media (max-width: 40rem) {
-    thead {
-      display: none;
-    }
-
-    tr {
-      display: block;
-      padding: var(--space-3) var(--space-4);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    tbody tr:last-child {
-      border-bottom: 0;
-    }
-
-    th,
-    td {
-      display: block;
-      padding: 0;
-      border: 0;
-    }
-
-    td + td {
-      color: var(--color-text-muted);
+  @media (min-width: 56rem) {
+    .foss-split {
+      grid-template-columns: 1fr 1fr;
     }
   }
 
   .why {
-    margin-bottom: var(--space-6);
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .why h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-1);
+  }
+
+  .why p {
+    margin: 0;
+    color: var(--color-text-muted);
   }
 
   .contribute ol {
     padding-left: 1.4rem;
-    max-width: var(--width-prose);
+    font-size: var(--text-sm);
   }
 
   .contribute li {
     margin-bottom: var(--space-2);
   }
 
+  /* Closing call to action */
   .join {
-    background: var(--color-brand-soft);
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-7);
   }
 
   .join-inner {
-    text-align: center;
     display: grid;
-    justify-items: center;
+    gap: var(--space-5);
+    align-items: center;
   }
 
-  .join .lead {
-    margin-inline: auto;
+  @media (min-width: 52rem) {
+    .join-inner {
+      grid-template-columns: 1.4fr auto;
+      gap: var(--space-7);
+    }
   }
 
-  .join .button-row {
-    justify-content: center;
-    margin-bottom: var(--space-4);
+  .join h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-3);
+  }
+
+  .join p {
+    margin: 0;
+    max-width: 40rem;
+    font-size: var(--text-lg);
   }
 </style>
