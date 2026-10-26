@@ -51,6 +51,7 @@ The beta waitlist link points to GitHub Discussions on the organisation until a 
 
 The build is plain static files in `dist/` served from the site root, so any static host works. No deploy workflow is included.
 
+- **Netlify:** import the repository; `netlify.toml` sets the build, Node 24 and security headers, and Netlify's `URL` is used as the site address unless `SITE_URL` is set.
 - **Cloudflare Pages:** build command `npm run build`, output directory `dist`, environment variables `NODE_VERSION=24` and `SITE_URL=<your domain>`.
 - **GitHub Pages:** serve from a custom domain or the `pesaclarity.github.io` repository, since the site expects to live at `/`. Use `actions/upload-pages-artifact` and `actions/deploy-pages` with `SITE_URL` set; no secrets are needed.
 

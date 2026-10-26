@@ -1,8 +1,9 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-// The production domain is not decided yet; set SITE_URL at build time once it is.
-const site = process.env.SITE_URL ?? "https://pesaclarity.github.io";
+// SITE_URL wins; on Netlify, URL is the site's primary address.
+const site =
+  process.env.SITE_URL ?? process.env.URL ?? "https://pesaclarity.github.io";
 
 export default defineConfig({
   site,
