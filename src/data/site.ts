@@ -12,13 +12,12 @@ export const site = {
 
 export const links = {
   github: org,
-  // TODO: replace with the real waitlist (form or address) before launch.
-  // Until then, people register interest in GitHub Discussions on the org.
-  waitlist: `${org}/.github/discussions`,
+  // A GitHub issue form on this public repo until a non-GitHub waitlist exists.
+  waitlist: `${org}/pesaclarity-web/issues/new?template=beta-waitlist.yml`,
   spec: `${org}/docs/blob/main/spec/PRODUCT-SPEC.md`,
   specPrivacy: `${org}/docs/blob/main/spec/PRODUCT-SPEC.md#architecture-privacy-and-data-model`,
   brand: `${org}/docs/blob/main/BRAND.md`,
-  contributing: `${org}/.github/blob/main/CONTRIBUTING.md`,
+  contributing: `${org}/pesaclarity-web/blob/main/CONTRIBUTING.md`,
   parserContributing: `${org}/ujumbe-parsers/blob/main/CONTRIBUTING.md`,
   parserIssues: `${org}/ujumbe-parsers/issues`,
   webSource: `${org}/pesaclarity-web`,

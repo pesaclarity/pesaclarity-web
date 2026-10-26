@@ -1,33 +1,27 @@
 /*
  * Design tokens. Source: pesaclarity/docs brand/tokens.json and BRAND.md.
  * This is the only file that defines colours, type, radii and sizes.
- * Dark values not in tokens.json (border, brandSoft, brandLink, success text, focus) are
- * derived here and checked for contrast against the dark surface and background.
+ * The site uses a softened palette: warm off-white instead of pure white, a muted
+ * brand red for large fills, and text at about 11:1 rather than 17:1. Every text
+ * pair stays at or above WCAG AA (4.5:1). The logo mark keeps the exact brand red.
  */
 :root {
   color-scheme: light dark;
 
-  --color-brand: #c8102e;
+  --color-brand: #b3384a;
   --color-on-brand: #ffffff;
-  --color-brand-link: #b81d2f;
-  --color-brand-soft: #fdecee;
-  --color-background: #fbf8f8;
-  --color-surface: #ffffff;
-  --color-border: #efe6e7;
-  --color-text: #1c1215;
-  --color-text-muted: #6f6064;
-  --color-success: #059669;
-  --color-success-text: #047857;
-  --color-warning: #b45309;
-  --color-focus: #b81d2f;
-
-  /* Dark band used for the privacy section in both themes. */
-  --color-ink: #1c1215;
-  --color-ink-surface: #2a1d21;
-  --color-ink-border: #3d2e32;
-  --color-on-ink: #fbf8f8;
-  --color-on-ink-muted: #c9bcc0;
-  --color-on-ink-accent: #ff8592;
+  --color-brand-link: #a8384a;
+  --color-brand-soft: #f8e9ea;
+  --color-background: #f6f1ee;
+  --color-surface: #fffcfa;
+  --color-border: #ebe1de;
+  --color-text: #3a2f33;
+  --color-text-muted: #6e6266;
+  --color-success: #3f9a7a;
+  --color-success-text: #2f7a5f;
+  --color-warning: #9a5a1c;
+  --color-focus: #a8384a;
+  --color-device: #4a3f43;
 
   /* The logo mark is never recoloured, so it keeps its own token. */
   --color-mark: #c8102e;
@@ -65,20 +59,19 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-brand: #ff6b7a;
-    --color-on-brand: #1a1214;
-    --color-brand-link: #ff8592;
-    --color-brand-soft: #3a1d23;
-    --color-background: #1a1214;
-    --color-surface: #251b1e;
-    --color-border: #3d2e32;
-    --color-text: #ede4e6;
-    --color-text-muted: #b3a5a9;
-    --color-success: #34d399;
-    --color-success-text: #6ee7b7;
-    --color-warning: #fbbf24;
-    --color-focus: #ff8592;
-    --color-ink: #120c0e;
-    --color-ink-surface: #221a1d;
+    --color-brand: #e0848f;
+    --color-on-brand: #1f1719;
+    --color-brand-link: #e99aa3;
+    --color-brand-soft: #33242a;
+    --color-background: #1f1719;
+    --color-surface: #2a2023;
+    --color-border: #3d3034;
+    --color-text: #ddd2d4;
+    --color-text-muted: #ab9ea2;
+    --color-success: #5fbf9a;
+    --color-success-text: #7fcfae;
+    --color-warning: #e0b060;
+    --color-focus: #e99aa3;
+    --color-device: #52464a;
   }
 }

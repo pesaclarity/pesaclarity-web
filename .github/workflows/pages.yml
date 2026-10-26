@@ -72,5 +72,10 @@ jobs:
             for href in $(curl -sS "$SITE$page" | grep -o 'href="/[^"#]*' | cut -d'"' -f2 | sort -u); do
               code=$(fetch "$origin$href"); echo "$code $href (linked from /$page)"; [ "$code" = 200 ] || fail=1
             done
+            # GitHub links must not 404 for a signed-out visitor; issue forms redirect to sign-in.
+            for href in $(curl -sS "$SITE$page" | grep -o 'href="https://github.com/[^"#]*' | cut -d'"' -f2 | sed 's/&amp;/\&/g' | sort -u); do
+              code=$(fetch "$href"); echo "$code $href (linked from /$page)"
+              case "$code" in 200|301|302) ;; *) fail=1 ;; esac
+            done
           done
           exit $fail
