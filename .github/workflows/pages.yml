@@ -40,6 +40,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       pages: write
       id-token: write
@@ -49,3 +51,26 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  verify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the live site
+        env:
+          SITE: ${{ needs.deploy.outputs.page_url }}
+        run: |
+          fetch() { curl -sS -o /dev/null -w '%{http_code}' --retry 6 --retry-delay 10 --retry-all-errors "$1"; }
+          fail=0
+          for path in "" privacy/ favicon.svg og.png apple-touch-icon.png robots.txt sitemap-index.xml; do
+            code=$(fetch "$SITE$path"); echo "$code /$path"; [ "$code" = 200 ] || fail=1
+          done
+          code=$(fetch "${SITE}does-not-exist/"); echo "$code /does-not-exist/ (expect 404)"; [ "$code" = 404 ] || fail=1
+          curl -sS "${SITE}does-not-exist/" | grep -q "Page not found" || { echo "custom 404 page not served"; fail=1; }
+          origin=$(echo "$SITE" | sed -E 's#^(https?://[^/]+).*#\1#')
+          for page in "" privacy/; do
+            for href in $(curl -sS "$SITE$page" | grep -o 'href="/[^"#]*' | cut -d'"' -f2 | sort -u); do
+              code=$(fetch "$origin$href"); echo "$code $href (linked from /$page)"; [ "$code" = 200 ] || fail=1
+            done
+          done
+          exit $fail
