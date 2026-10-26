@@ -21,6 +21,7 @@ export const links = {
   parserContributing: `${org}/ujumbe-parsers/blob/main/CONTRIBUTING.md`,
   parserIssues: `${org}/ujumbe-parsers/issues`,
   webSource: `${org}/pesaclarity-web`,
+  webIssues: `${org}/pesaclarity-web/issues`,
 } as const;
 
 export interface Principle {
@@ -108,3 +109,39 @@ export const repos: readonly Repo[] = [
 export const specPublic = repos.find((r) => r.name === "docs")?.public ?? false;
 
 export const repoUrl = (name: string): string => `${org}/${name}`;
+
+export interface Faq {
+  q: string;
+  a: string;
+}
+
+export const faqs: readonly Faq[] = [
+  {
+    q: "Is it really free?",
+    a: "Yes. Every feature is free for every user, with no premium tier, paywalls or ads. Companies that want to use the code without sharing changes can buy a commercial licence, which helps fund the project.",
+  },
+  {
+    q: "Does it need my M-Pesa PIN or bank password?",
+    a: "No. It reads SMS from the banks and wallets you choose. It never asks for a PIN, a password or a bank login, and never connects to a bank.",
+  },
+  {
+    q: "Can you see my transactions?",
+    a: "No. Reading and analysis run on your phone. Our server holds only your sign-in, backups encrypted with your passphrase, and optional noised model updates.",
+  },
+  {
+    q: "Does it work on iPhone?",
+    a: "Not yet. It is Android first because it reads money messages on the phone, which iPhone does not allow.",
+  },
+  {
+    q: "Which banks and wallets are supported?",
+    a: "M-Pesa first, then banks, SACCOs and wallets as parser packs are added. If yours is missing, anyone can add it.",
+  },
+  {
+    q: "What happens if I lose my phone?",
+    a: "Restore from your encrypted backup with your passphrase or printable recovery key. We cannot read or reset it, so keep the recovery key safe.",
+  },
+  {
+    q: "When can I use it?",
+    a: "Pesa Clarity is in pre-alpha. A private beta for 30 to 50 people in Kenya opens once the Android app passes Play review. Join the waitlist to hear first.",
+  },
+];

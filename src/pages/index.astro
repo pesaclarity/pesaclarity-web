@@ -1,14 +1,16 @@
 ---
 import { withBase } from "../lib/paths";
 import Base from "../layouts/Base.astro";
-import { links, principles, repos, repoUrl } from "../data/site";
+import { faqs, links, principles, repos, repoUrl } from "../data/site";
 ---
 
 <Base>
   <section class="hero" aria-labelledby="hero-title">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <p class="pill">Free · No ads · Open source</p>
+        <p class="pill">
+          <span class="pill-dot"></span>Pre-alpha · Android first
+        </p>
         <h1 id="hero-title">
           Your money, made clear,{" "}
           <span class="accent">without giving your data away.</span>
@@ -19,84 +21,75 @@ import { links, principles, repos, repoUrl } from "../data/site";
           where money leaks, and when you will be debt-free.
         </p>
         <div class="button-row">
-          <a class="button button-primary" href={links.waitlist}>
+          <a class="button button-primary button-large" href={links.waitlist}>
             Join the beta waitlist
           </a>
-          <a class="button button-secondary" href={links.github}>
-            See the code on GitHub
+          <a class="button button-secondary button-large" href="#how">
+            See how it works
           </a>
         </div>
         <ul class="trust" role="list">
+          <li>Free forever, no ads</li>
           <li>No bank logins</li>
           <li>Nothing leaves your phone</li>
-          <li>Open-source licences</li>
         </ul>
       </div>
 
       <figure class="showcase" aria-labelledby="phone-caption">
+        <div class="glow" aria-hidden="true"></div>
         <div class="phone">
-          <div class="phone-bar" aria-hidden="true">
-            <span>9:41</span>
-            <span class="notch"></span>
-            <span>●●●</span>
-          </div>
-          <p class="phone-greet">Habari, Wanjiru</p>
-          <div class="today">
-            <p class="today-label">Safe to spend today</p>
-            <p class="today-amount number">
-              <span class="currency">KES</span> 1,200
-            </p>
-            <p class="today-note">Weekday limit · 3,450 left this week</p>
-            <div class="meter" aria-hidden="true">
-              <span></span>
+          <div class="screen">
+            <div class="status-bar" aria-hidden="true">
+              <span>9:41</span>
+              <span class="island"></span>
+              <span>100%</span>
             </div>
+            <div class="notice" aria-hidden="true">
+              <span class="notice-icon">M</span>
+              <div>
+                <p class="notice-title">Java House · Eating out</p>
+                <p class="notice-sub">From M-Pesa SMS · read on this phone</p>
+              </div>
+              <span class="number">−450</span>
+            </div>
+            <div class="today">
+              <p class="today-label">Safe to spend today</p>
+              <p class="today-amount number">
+                <span class="currency">KES</span>1,200
+              </p>
+              <p class="today-note">3,450 left this week</p>
+              <div class="meter" aria-hidden="true">
+                <span></span>
+              </div>
+            </div>
+            <ul class="mini-list" role="list">
+              <li>
+                <span>Rent, due Friday</span>
+                <span class="number">18,000</span>
+                <span class="tag tag-ok">Covered</span>
+              </li>
+              <li>
+                <span>Leaks this month</span>
+                <span class="number">6,400</span>
+                <span class="tag">9% of income</span>
+              </li>
+              <li>
+                <span>Debt-free by</span>
+                <span class="number">Aug 2028</span>
+                <span class="tag">On track</span>
+              </li>
+            </ul>
           </div>
-          <ul class="mini-list" role="list">
-            <li>
-              <span>Rent, due Friday</span>
-              <span class="number">18,000</span>
-              <span class="tag tag-ok">Covered</span>
-            </li>
-            <li>
-              <span>Leaks this month</span>
-              <span class="number">6,400</span>
-              <span class="tag">9% of income</span>
-            </li>
-            <li>
-              <span>Debt-free by</span>
-              <span class="number">Aug 2028</span>
-              <span class="tag">On track</span>
-            </li>
-          </ul>
         </div>
-
-        <div class="float float-sms" aria-hidden="true">
-          <p class="float-from">MPESA</p>
-          <p>
-            TK41X0ABCD Confirmed. Ksh450.00 paid to JAVA HOUSE. New M-PESA
-            balance is Ksh8,210.00.
-          </p>
-        </div>
-        <div class="float float-parsed" aria-hidden="true">
-          <span class="dot"></span>
-          <div>
-            <p class="float-title">Java House · Eating out</p>
-            <p class="float-sub">Read on your phone · 0 bytes uploaded</p>
-          </div>
-          <span class="number">−450</span>
-        </div>
-
         <figcaption id="phone-caption" class="visually-hidden">
           The home screen answers "how am I doing today?". Figures are
           illustrative.
         </figcaption>
       </figure>
     </div>
-  </section>
 
-  <section class="stats" aria-label="Pesa Clarity in numbers">
     <div class="container">
-      <dl class="stats-grid">
+      <dl class="stats">
         <div>
           <dt>Price, for every feature</dt>
           <dd class="number">KES 0</dd>
@@ -110,24 +103,18 @@ import { links, principles, repos, repoUrl } from "../data/site";
           <dd class="number">7</dd>
         </div>
         <div>
-          <dt>Of the code open-source licensed</dt>
+          <dt>Open-source licensed</dt>
           <dd class="number">100%</dd>
         </div>
       </dl>
-      <p class="status muted">
-        Status: pre-alpha. We are talking to users and building the parsers.
-        Nothing to install yet. Figures on this page are illustrative.
-      </p>
     </div>
   </section>
 
   <section id="what" class="section" aria-labelledby="what-title">
     <div class="container">
       <div class="section-head">
-        <div>
-          <p class="eyebrow">What it is</p>
-          <h2 id="what-title">One number first. Detail one tap deeper.</h2>
-        </div>
+        <p class="eyebrow">What it is</p>
+        <h2 id="what-title">One number first. Detail one tap deeper.</h2>
         <p>
           You can see every M-Pesa transaction, but not your finances. Pesa
           Clarity does the sorting for you, on the phone, and answers four
@@ -135,50 +122,48 @@ import { links, principles, repos, repoUrl } from "../data/site";
         </p>
       </div>
 
-      <ol class="steps" role="list" aria-label="How it gets your numbers">
-        <li>
-          <span class="step-n number">1</span>
-          <h3>Pick your senders</h3>
-          <p>
-            Tick the banks and wallets you use, such as M-Pesa, KCB or Equity.
-          </p>
-        </li>
-        <li>
-          <span class="step-n number">2</span>
-          <h3>Read on your phone</h3>
-          <p>
-            Only those senders' messages are read, on the device. No bank
-            logins, no passwords.
-          </p>
-        </li>
-        <li>
-          <span class="step-n number">3</span>
-          <h3>Get a daily plan</h3>
-          <p>
-            Statement PDFs fill in older history and check that the totals
-            match.
-          </p>
-        </li>
-      </ol>
-
       <ul class="bento" role="list">
-        <li class="card q q-spend">
-          <div class="q-visual" aria-hidden="true">
-            <p class="big number">1,200</p>
+        <li class="tile tile-spend">
+          <div class="tile-text">
+            <h3>What can I spend today?</h3>
+            <p>
+              A daily limit from what is left of your budget, with a different
+              one for weekends.
+            </p>
+          </div>
+          <div class="visual spend" aria-hidden="true">
+            <p class="spend-label">You can spend</p>
+            <p class="spend-big number">1,200</p>
             <div class="week">
               {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
                 <span class={i < 2 ? "done" : i === 2 ? "now" : ""}>{d}</span>
               ))}
             </div>
+            <dl class="limits">
+              <div>
+                <dt>Weekdays</dt>
+                <dd class="number">1,200</dd>
+              </div>
+              <div>
+                <dt>Weekends</dt>
+                <dd class="number">1,800</dd>
+              </div>
+              <div>
+                <dt>Left this week</dt>
+                <dd class="number">3,450</dd>
+              </div>
+            </dl>
           </div>
-          <h3>What can I spend today?</h3>
-          <p>
-            "You can spend 1,200 today." A daily limit from what is left of your
-            budget, with a different one for weekends.
-          </p>
         </li>
-        <li class="card q">
-          <ul class="q-visual upcoming" aria-hidden="true" role="list">
+        <li class="tile">
+          <div class="tile-text">
+            <h3>What is coming up?</h3>
+            <p>
+              Rent, school fees and loan payments, with a warning before a
+              payment would fail.
+            </p>
+          </div>
+          <ul class="visual upcoming" aria-hidden="true" role="list">
             <li>
               <span>School fees</span>
               <span class="warn">in 3 days</span>
@@ -192,53 +177,89 @@ import { links, principles, repos, repoUrl } from "../data/site";
               <span>28 Oct</span>
             </li>
           </ul>
-          <h3>What is coming up?</h3>
-          <p>
-            Rent, school fees, card charges and loan payments, with a warning
-            days before a payment would fail.
-          </p>
         </li>
-        <li class="card q">
-          <div class="q-visual bars" aria-hidden="true">
-            <span style="--w: 82%">Transfers</span>
-            <span style="--w: 58%">Lifestyle</span>
-            <span style="--w: 36%">Fuliza</span>
-            <span style="--w: 18%">Fees</span>
+        <li class="tile">
+          <div class="tile-text">
+            <h3>Where does my money leak?</h3>
+            <p>
+              Fees, Fuliza, lifestyle and transfers, as a share of income, so
+              small amounts stop hiding.
+            </p>
           </div>
-          <h3>Where does my money leak?</h3>
-          <p>
-            Fees, Fuliza, lifestyle and transfers to friends and family, as a
-            share of income, so small amounts stop hiding.
-          </p>
+          <div class="visual bars" aria-hidden="true">
+            <span style="--w: 82%">
+              Transfers <b>12%</b>
+            </span>
+            <span style="--w: 58%">
+              Lifestyle <b>8%</b>
+            </span>
+            <span style="--w: 30%">
+              Fuliza <b>4%</b>
+            </span>
+          </div>
         </li>
-        <li class="card q">
-          <div class="q-visual debt" aria-hidden="true">
+        <li class="tile tile-wide">
+          <div class="tile-text">
+            <h3>When will I be debt-free?</h3>
+            <p>
+              Bank loans, Fuliza and family loans in one plan, with a realistic
+              date and a split for each payday.
+            </p>
+          </div>
+          <div class="visual debt" aria-hidden="true">
             <div class="debt-row">
-              <span>Paid off</span>
-              <span class="number">62%</span>
+              <span>62% paid off</span>
+              <span class="number">Aug 2028</span>
             </div>
             <div class="meter meter-soft">
               <span style="--w: 62%"></span>
             </div>
-            <p class="debt-date number">Aug 2028</p>
           </div>
-          <h3>When will I be debt-free?</h3>
-          <p>
-            Bank loans, Fuliza and family loans in one plan, with a realistic
-            date and a split for each payday.
-          </p>
         </li>
       </ul>
     </div>
   </section>
 
-  <section id="privacy" class="section tinted" aria-labelledby="privacy-title">
+  <section id="how" class="section section-alt" aria-labelledby="how-title">
     <div class="container">
       <div class="section-head">
-        <div>
-          <p class="eyebrow">Privacy promise</p>
-          <h2 id="privacy-title">Your transactions never leave your phone</h2>
-        </div>
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-title">Three steps. No bank logins.</h2>
+      </div>
+      <ol class="steps" role="list">
+        <li>
+          <span class="step-n number">01</span>
+          <h3>Pick your senders</h3>
+          <p>
+            Tick the banks and wallets you use, such as M-Pesa, KCB or Equity.
+            Everything else is ignored.
+          </p>
+        </li>
+        <li>
+          <span class="step-n number">02</span>
+          <h3>Read on your phone</h3>
+          <p>
+            Messages from those senders are read on the device. No passwords, no
+            connection to any bank.
+          </p>
+        </li>
+        <li>
+          <span class="step-n number">03</span>
+          <h3>Get a daily plan</h3>
+          <p>
+            Statement PDFs fill in older history and check that the totals
+            match.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="privacy" class="section" aria-labelledby="privacy-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Privacy promise</p>
+        <h2 id="privacy-title">Your transactions never leave your phone</h2>
         <p>
           Here is exactly what stays with you and what our server holds. Nothing
           else.
@@ -246,7 +267,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
       </div>
       <div class="privacy-split">
         <div class="panel panel-phone">
-          <h3>Stays on your phone</h3>
+          <p class="panel-label">On your phone</p>
           <ul class="check-list" role="list">
             <li>Your messages, transactions, payees and balances</li>
             <li>Statement PDFs and their passwords, used once and discarded</li>
@@ -258,32 +279,28 @@ import { links, principles, repos, repoUrl } from "../data/site";
             fingerprint.
           </p>
         </div>
-        <div class="wall" aria-hidden="true">
-          <span>Only this crosses</span>
-        </div>
         <div class="panel">
-          <h3>What our server holds</h3>
+          <p class="panel-label">On our server</p>
           <dl class="server-list">
             <div>
               <dt>Sign-in</dt>
               <dd>
-                Your account id, phone number or email, and when you signed in
-                or out. No financial data. You can also use the app without an
-                account.
+                Your account id and phone number or email. No financial data.
+                You can also use the app without an account.
               </dd>
             </div>
             <div>
               <dt>Backup vault</dt>
               <dd>
                 Backups encrypted on your phone with your passphrase. We cannot
-                read them, so you get a printable recovery key.
+                read them.
               </dd>
             </div>
             <div>
               <dt>Model updates</dt>
               <dd>
-                Noised, combined updates that help the categoriser improve for
-                everyone. Never your data. You can switch this off.
+                Noised, combined updates that improve the categoriser. Never
+                your data. You can switch this off.
               </dd>
             </div>
           </dl>
@@ -296,20 +313,19 @@ import { links, principles, repos, repoUrl } from "../data/site";
     </div>
   </section>
 
-  <section id="beliefs" class="section" aria-labelledby="beliefs-title">
+  <section
+    id="beliefs"
+    class="section section-alt"
+    aria-labelledby="beliefs-title"
+  >
     <div class="container">
       <div class="section-head">
-        <div>
-          <p class="eyebrow">What we believe</p>
-          <h2 id="beliefs-title">Five commitments behind every decision</h2>
-        </div>
-        <p>
-          These come straight from the product spec, and they do not change.
-        </p>
+        <p class="eyebrow">What we believe</p>
+        <h2 id="beliefs-title">Five commitments behind every decision</h2>
       </div>
       <ol class="principles" role="list">
         {principles.map((p, i) => (
-          <li class="card principle">
+          <li class="principle">
             <span class="principle-number number" aria-hidden="true">
               {String(i + 1).padStart(2, "0")}
             </span>
@@ -324,21 +340,18 @@ import { links, principles, repos, repoUrl } from "../data/site";
   <section id="open-source" class="section" aria-labelledby="foss-title">
     <div class="container">
       <div class="section-head">
-        <div>
-          <p class="eyebrow">Open source for good</p>
-          <h2 id="foss-title">Don't trust us. Check the code.</h2>
-        </div>
+        <p class="eyebrow">Open source for good</p>
+        <h2 id="foss-title">Don't trust us. Check the code.</h2>
         <p>
           An app that reads your money messages should prove what it does with
-          them. Every part of Pesa Clarity is open source. The parsers and this
-          site are public now; the app, server and models open before the beta,
-          so anyone can confirm that your data stays on your phone.
+          them. The parsers and this site are public now; the app, server and
+          models open before the beta.
         </p>
       </div>
 
       <ul class="repos" role="list">
         {repos.map((r) => (
-          <li class="card repo">
+          <li class="repo">
             {r.public ? (
               <a class="repo-name" href={repoUrl(r.name)}>
                 {r.name}
@@ -360,32 +373,26 @@ import { links, principles, repos, repoUrl } from "../data/site";
             <h3>Why AGPL for the app and server</h3>
             <p>
               Anyone who changes them, including to run a hosted copy, must
-              share their changes. A commercial licence is available on request,
-              which can help fund the project.
+              share their changes.
             </p>
           </div>
           <div>
             <h3>Why Apache for the parsers</h3>
             <p>
               So banks, SACCOs, fintechs and other apps can use them freely.
-              More users means more people keeping them current.
             </p>
           </div>
           <div>
             <h3>Why the name is protected</h3>
             <p>
-              The code can be forked, but the Pesa Clarity name and logo cannot.
-              That stops scam clones posing as the real app to harvest SMS.
+              The code can be forked, but the name and logo cannot. That stops
+              scam clones posing as the real app.
             </p>
           </div>
         </div>
 
-        <div class="card contribute">
+        <div class="panel contribute">
           <h3>Add your bank or wallet</h3>
-          <p>
-            Each institution's messages are read by a parser pack: a small set
-            of rules with tests. If yours is missing, you can add it.
-          </p>
           <ol>
             <li>
               Open an issue on <a href={links.parserIssues}>ujumbe-parsers</a>{" "}
@@ -396,8 +403,8 @@ import { links, principles, repos, repoUrl } from "../data/site";
               received, paybill, till, reversal.
             </li>
             <li>
-              Add made-up test messages with fake names and numbers like 0700
-              000 000. Never paste real messages.
+              Add made-up test messages with fake names and numbers. Never paste
+              real messages.
             </li>
             <li>Open a pull request. It is merged when every test passes.</li>
           </ol>
@@ -409,24 +416,48 @@ import { links, principles, repos, repoUrl } from "../data/site";
     </div>
   </section>
 
-  <section id="join" class="join" aria-labelledby="join-title">
-    <div class="container join-inner">
-      <div>
-        <h2 id="join-title">Help build it</h2>
+  <section id="faq" class="section section-alt" aria-labelledby="faq-title">
+    <div class="container faq-inner">
+      <div class="section-head">
+        <p class="eyebrow">Questions</p>
+        <h2 id="faq-title">Frequently asked</h2>
         <p>
-          The private beta opens to 30 to 50 people in Kenya once the Android
-          app passes Play review. Join the waitlist and we will tell you when it
-          is ready. New to open source? Start with the{" "}
-          <a href={links.contributing}>contributing guide</a>.
+          Something missing? <a href={links.webIssues}>Ask on GitHub</a>.
         </p>
       </div>
-      <div class="button-row">
-        <a class="button button-primary" href={links.waitlist}>
-          Join the beta waitlist
-        </a>
-        <a class="button button-secondary" href={links.github}>
-          Star on GitHub
-        </a>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <details class="faq">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="section" aria-labelledby="join-title">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h2 id="join-title">Help build it</h2>
+          <p>
+            The private beta opens to 30 to 50 people in Kenya once the Android
+            app passes Play review. Join the waitlist and we will tell you when
+            it is ready.
+          </p>
+        </div>
+        <div class="button-row">
+          <a class="button button-primary button-large" href={links.waitlist}>
+            Join the beta waitlist
+          </a>
+          <a
+            class="button button-secondary button-large"
+            href={links.contributing}
+          >
+            Contribute
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -437,10 +468,15 @@ import { links, principles, repos, repoUrl } from "../data/site";
   .hero {
     position: relative;
     overflow: hidden;
-    padding-block: var(--space-7) var(--space-7);
+    padding-block: var(--space-7) var(--space-6);
     background:
       radial-gradient(
-        60rem 30rem at 85% 10%,
+        48rem 32rem at 80% 0%,
+        var(--color-brand-soft),
+        transparent 70%
+      ),
+      radial-gradient(
+        36rem 24rem at 0% 100%,
         var(--color-brand-soft),
         transparent 70%
       ),
@@ -453,31 +489,40 @@ import { links, principles, repos, repoUrl } from "../data/site";
     align-items: center;
   }
 
-  @media (min-width: 60rem) {
+  @media (min-width: 62rem) {
     .hero-inner {
-      grid-template-columns: 1.15fr 1fr;
-      gap: var(--space-6);
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: var(--space-8);
     }
   }
 
   .pill {
-    display: inline-block;
-    font-family: var(--font-display);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     font-size: var(--text-sm);
     font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-brand-link);
+    color: var(--color-text);
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-pill);
-    padding: var(--space-1) var(--space-4);
+    padding: var(--space-1) var(--space-4) var(--space-1) var(--space-3);
     margin-bottom: var(--space-5);
   }
 
+  .pill-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-success);
+    box-shadow: 0 0 0 4px
+      color-mix(in srgb, var(--color-success) 20%, transparent);
+  }
+
   h1 {
-    letter-spacing: -0.035em;
-    line-height: 1.04;
+    font-size: var(--text-hero);
+    letter-spacing: -0.04em;
+    line-height: 1.02;
     margin-bottom: var(--space-5);
   }
 
@@ -488,8 +533,13 @@ import { links, principles, repos, repoUrl } from "../data/site";
   .lead {
     font-size: var(--text-lg);
     color: var(--color-text-muted);
-    max-width: 36rem;
+    max-width: 38rem;
     margin-bottom: var(--space-6);
+  }
+
+  .button-large {
+    min-height: 3.25rem;
+    padding-inline: var(--space-6);
   }
 
   .trust {
@@ -500,41 +550,59 @@ import { links, principles, repos, repoUrl } from "../data/site";
     padding: 0;
     margin: var(--space-6) 0 0;
     font-size: var(--text-sm);
-    font-weight: 600;
+    font-weight: 500;
+    color: var(--color-text-muted);
   }
 
   .trust li::before {
     content: "✓";
     color: var(--color-success-text);
+    font-weight: 700;
     margin-right: var(--space-2);
   }
 
   .showcase {
     position: relative;
     margin: 0;
-    justify-self: center;
-    width: min(100%, 25rem);
-    padding-block: var(--space-5) var(--space-7);
+    display: grid;
+    place-items: center;
+  }
+
+  .glow {
+    position: absolute;
+    width: min(30rem, 90%);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-brand) 22%, transparent),
+      transparent 65%
+    );
   }
 
   .phone {
     position: relative;
-    width: min(100%, 19.5rem);
-    margin-inline: auto;
-    background: var(--color-surface);
-    border: 10px solid var(--color-device);
-    border-radius: 44px;
-    padding: var(--space-3) var(--space-4) var(--space-4);
+    width: min(100%, 21rem);
+    padding: 0.5rem;
+    border-radius: 3rem;
+    background: var(--color-device);
     box-shadow:
-      0 40px 80px -30px rgb(58 47 51 / 0.28),
-      0 0 0 1px rgb(58 47 51 / 0.08);
+      0 50px 100px -40px rgb(58 47 51 / 0.45),
+      inset 0 0 0 1px rgb(255 255 255 / 0.08);
   }
 
-  .phone p {
+  .screen {
+    overflow: hidden;
+    border-radius: 2.5rem;
+    background: var(--color-surface);
+    padding: var(--space-3) var(--space-4) var(--space-5);
+  }
+
+  .screen p {
     margin: 0;
   }
 
-  .phone-bar {
+  .status-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -543,33 +611,71 @@ import { links, principles, repos, repoUrl } from "../data/site";
     padding: 0 var(--space-2) var(--space-3);
   }
 
-  .notch {
-    width: 5rem;
-    height: 1.25rem;
+  .island {
+    width: 5.5rem;
+    height: 1.4rem;
     border-radius: var(--radius-pill);
     background: var(--color-device);
   }
 
-  .phone-greet {
-    font-family: var(--font-display);
+  .notice {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+    border-radius: 18px;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  .notice .number {
+    margin-left: auto;
     font-weight: 700;
-    margin-bottom: var(--space-3) !important;
+  }
+
+  .notice-icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: var(--color-success);
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .notice-title {
+    font-weight: 600;
+  }
+
+  .notice-sub {
+    color: var(--color-success-text);
+    font-size: 0.72rem;
   }
 
   .today {
-    background: var(--color-brand);
+    background: linear-gradient(
+      150deg,
+      var(--color-brand),
+      color-mix(in srgb, var(--color-brand) 78%, #000000)
+    );
     color: var(--color-on-brand);
-    border-radius: 20px;
+    border-radius: 22px;
     padding: var(--space-4) var(--space-4) var(--space-5);
   }
 
   .today-label {
-    font-size: var(--text-sm);
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.9;
   }
 
   .today-amount {
-    font-size: 3.25rem;
+    font-size: 3.1rem;
     font-weight: 700;
     line-height: 1.05;
     letter-spacing: -0.03em;
@@ -577,14 +683,16 @@ import { links, principles, repos, repoUrl } from "../data/site";
   }
 
   .currency {
-    font-size: 0.38em;
+    font-size: 0.36em;
     font-weight: 500;
     letter-spacing: 0;
     vertical-align: 0.95em;
+    margin-right: 0.35rem;
   }
 
   .today-note {
-    font-size: 0.8125rem;
+    font-size: 0.8rem;
+    opacity: 0.9;
   }
 
   .meter {
@@ -615,7 +723,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
     gap: 0 var(--space-3);
     padding: var(--space-3) var(--space-1);
     border-bottom: 1px solid var(--color-border);
-    font-size: 0.875rem;
+    font-size: 0.85rem;
   }
 
   .mini-list li:last-child {
@@ -631,7 +739,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
   .tag {
     grid-column: 1 / -1;
     color: var(--color-text-muted);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
 
   .tag-ok {
@@ -639,118 +747,41 @@ import { links, principles, repos, repoUrl } from "../data/site";
     font-weight: 600;
   }
 
-  .float {
-    position: absolute;
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5) var(--space-4);
+    margin: var(--space-8) 0 0;
+    padding: var(--space-5) var(--space-6);
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
-    box-shadow: 0 18px 40px -18px rgb(58 47 51 / 0.22);
-    font-size: 0.8125rem;
-    line-height: 1.4;
-  }
-
-  .float p {
-    margin: 0;
-  }
-
-  .float-sms {
-    top: 2.25rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(92%, 18.5rem);
-    padding: var(--space-3);
-    background: color-mix(in srgb, var(--color-surface) 94%, transparent);
-    backdrop-filter: blur(6px);
-  }
-
-  .float-from {
-    font-weight: 700;
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-1) !important;
-  }
-
-  .float-parsed {
-    bottom: -0.5rem;
-    right: -10%;
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-3) var(--space-4);
-    width: 17rem;
-  }
-
-  .float-parsed .number {
-    font-weight: 700;
-    margin-left: auto;
-  }
-
-  .float-title {
-    font-weight: 600;
-  }
-
-  .float-sub {
-    color: var(--color-success-text);
-    font-size: 0.75rem;
-  }
-
-  .dot {
-    flex: none;
-    width: 0.75rem;
-    height: 0.75rem;
-    border-radius: 50%;
-    background: var(--color-success);
-    box-shadow: 0 0 0 4px rgb(5 150 105 / 0.15);
-  }
-
-  @media (max-width: 40rem) {
-    .float-parsed {
-      right: 0;
-      width: 15.5rem;
-    }
-  }
-
-  /* Stats strip */
-  .stats {
-    background: var(--color-surface);
-    border-block: 1px solid var(--color-border);
-    padding-block: var(--space-6) var(--space-5);
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-5) var(--space-4);
-    margin: 0;
+    border-radius: var(--radius-large);
   }
 
   @media (min-width: 52rem) {
-    .stats-grid {
-      grid-template-columns: repeat(4, 1fr);
+    .stats {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .stats-grid > div + div {
+    .stats > div + div {
       border-left: 1px solid var(--color-border);
       padding-left: var(--space-5);
     }
   }
 
-  .stats-grid div {
+  .stats div {
     display: flex;
     flex-direction: column;
   }
 
-  .stats-grid dd {
-    order: -1;
-  }
-
   .stats dd {
+    order: -1;
     margin: 0;
-    font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+    font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.6rem);
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.1;
-    color: var(--color-brand-link);
   }
 
   .stats dt {
@@ -758,144 +789,133 @@ import { links, principles, repos, repoUrl } from "../data/site";
     color: var(--color-text-muted);
   }
 
-  .status {
-    font-size: var(--text-sm);
-    margin: var(--space-5) 0 0;
+  /* Sections */
+  .section {
+    border-top: 0;
   }
 
-  /* Section heads: title left, summary right */
+  .section-alt {
+    background: var(--color-surface);
+    border-block: 1px solid var(--color-border);
+  }
+
   .section-head {
-    display: grid;
-    gap: var(--space-3) var(--space-7);
-    margin-bottom: var(--space-6);
-    align-items: end;
+    max-width: 44rem;
+    margin-bottom: var(--space-7);
   }
 
   .section-head h2 {
-    margin: 0;
+    font-size: var(--text-section);
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin-bottom: var(--space-4);
   }
 
-  .section-head > p {
+  .section-head > p:last-child {
     margin: 0;
     font-size: var(--text-lg);
     color: var(--color-text-muted);
   }
 
-  @media (min-width: 52rem) {
-    .section-head {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  /* Steps */
-  .steps {
-    display: grid;
-    gap: var(--space-4);
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--space-4);
-    counter-reset: none;
-  }
-
-  @media (min-width: 52rem) {
-    .steps {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .steps li {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0 var(--space-4);
-    align-items: start;
-    padding: var(--space-4) var(--space-5);
-    border-radius: var(--radius-card);
-    background: var(--color-brand-soft);
-  }
-
-  .steps h3,
-  .steps p {
-    grid-column: 2;
-    margin: 0;
-  }
-
-  .steps h3 {
-    font-size: var(--text-base);
-  }
-
-  .steps p {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-  }
-
-  .step-n {
-    grid-row: span 2;
-    display: grid;
-    place-items: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 50%;
-    background: var(--color-brand);
-    color: var(--color-on-brand);
-    font-weight: 700;
-  }
-
-  /* Four questions */
+  /* Bento */
   .bento {
     display: grid;
     gap: var(--space-4);
     list-style: none;
     padding: 0;
     margin: 0;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
   }
 
-  .q {
+  @media (min-width: 56rem) {
+    .bento {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .tile-spend {
+      grid-row: span 2;
+    }
+
+    .tile-wide {
+      grid-column: span 2;
+    }
+  }
+
+  .tile {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    min-width: 0;
   }
 
-  .q h3 {
+  .tile h3 {
+    font-size: var(--text-lg);
     margin-bottom: var(--space-2);
   }
 
-  .q > p {
+  .tile-text p {
     margin: 0;
     color: var(--color-text-muted);
+  }
+
+  .tile-spend {
+    background: linear-gradient(
+      180deg,
+      var(--color-surface),
+      var(--color-brand-soft)
+    );
+  }
+
+  .visual {
+    margin: 0;
+    padding: var(--space-4);
+    border-radius: var(--radius-card);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
     font-size: var(--text-sm);
   }
 
-  .q-visual {
-    min-height: 8.5rem;
-    margin: 0 0 var(--space-5);
-    padding: var(--space-4);
-    border-radius: var(--radius-small);
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    font-size: 0.8125rem;
+  .spend {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-6) var(--space-5);
+    background: var(--color-surface);
   }
 
-  .big {
-    font-size: 2.5rem;
+  .spend p {
+    margin: 0;
+  }
+
+  .spend-label {
+    color: var(--color-text-muted);
+  }
+
+  .spend-big {
+    font-size: clamp(3rem, 2rem + 3vw, 4.5rem);
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     line-height: 1;
-    margin: 0 0 var(--space-4);
     color: var(--color-brand-link);
+    margin-block: var(--space-2) var(--space-5) !important;
   }
 
   .week {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: var(--space-1);
   }
 
   .week span {
-    flex: 1;
     text-align: center;
-    padding: var(--space-1) 0;
-    border-radius: 8px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    padding: var(--space-2) 0;
+    border-radius: 10px;
+    background: var(--color-background);
     font-weight: 600;
     color: var(--color-text-muted);
   }
@@ -907,8 +927,30 @@ import { links, principles, repos, repoUrl } from "../data/site";
 
   .week .now {
     background: var(--color-brand);
-    border-color: var(--color-brand);
     color: var(--color-on-brand);
+  }
+
+  .limits {
+    display: grid;
+    gap: var(--space-2);
+    margin: var(--space-5) 0 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .limits div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .limits dt {
+    font-weight: 400;
+    color: var(--color-text-muted);
+  }
+
+  .limits dd {
+    margin: 0;
+    font-weight: 600;
   }
 
   .upcoming {
@@ -918,6 +960,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
   .upcoming li {
     display: flex;
     justify-content: space-between;
+    gap: var(--space-3);
     padding: var(--space-2) 0;
     border-bottom: 1px solid var(--color-border);
   }
@@ -928,6 +971,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
 
   .upcoming li:last-child {
     border-bottom: 0;
+    padding-bottom: 0;
   }
 
   .warn {
@@ -942,8 +986,10 @@ import { links, principles, repos, repoUrl } from "../data/site";
 
   .bars span {
     position: relative;
-    padding: 0.2rem var(--space-2);
-    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem var(--space-3);
+    font-weight: 500;
     z-index: 0;
   }
 
@@ -952,9 +998,13 @@ import { links, principles, repos, repoUrl } from "../data/site";
     position: absolute;
     inset: 0 auto 0 0;
     width: var(--w);
-    border-radius: 6px;
+    border-radius: 8px;
     background: var(--color-brand-soft);
     z-index: -1;
+  }
+
+  .debt {
+    padding: var(--space-5);
   }
 
   .debt-row {
@@ -963,53 +1013,96 @@ import { links, principles, repos, repoUrl } from "../data/site";
     font-weight: 600;
   }
 
+  .debt-row .number {
+    font-size: var(--text-lg);
+    color: var(--color-brand-link);
+  }
+
   .meter-soft {
     background: var(--color-brand-soft);
-    height: 10px;
+    height: 12px;
     color: var(--color-brand);
   }
 
-  .debt-date {
-    font-size: 1.75rem;
+  /* Steps */
+  .steps {
+    display: grid;
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  @media (min-width: 52rem) {
+    .steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .steps li {
+    padding: var(--space-6);
+    border-radius: var(--radius-large);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+  }
+
+  .steps h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .steps p {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  .step-n {
+    display: inline-block;
+    font-size: var(--text-sm);
     font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: var(--space-4) 0 0;
-  }
-
-  /* Privacy band */
-  .tinted {
+    color: var(--color-brand-link);
     background: var(--color-brand-soft);
-    border-top: 0;
+    border-radius: var(--radius-pill);
+    padding: 0.15rem var(--space-3);
+    margin-bottom: var(--space-5);
   }
 
+  /* Privacy */
   .privacy-split {
     display: grid;
     gap: var(--space-4);
-    align-items: stretch;
   }
 
-  @media (min-width: 56rem) {
+  @media (min-width: 52rem) {
     .privacy-split {
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   .panel {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-card);
-    padding: var(--space-5);
+    border-radius: var(--radius-large);
+    padding: var(--space-6);
   }
 
   .panel-phone {
-    border-color: var(--color-success);
+    background: linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--color-success) 10%, var(--color-surface)),
+      var(--color-surface) 60%
+    );
   }
 
-  .panel h3 {
-    font-size: var(--text-base);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--color-text-muted);
+  .panel-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    padding: 0.15rem var(--space-3);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    margin-bottom: var(--space-5);
   }
 
   .check-list {
@@ -1037,29 +1130,6 @@ import { links, principles, repos, repoUrl } from "../data/site";
     margin: 0;
   }
 
-  .wall {
-    display: grid;
-    place-items: center;
-  }
-
-  .wall span {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text-muted);
-    border: 1px dashed var(--color-border);
-    border-radius: var(--radius-pill);
-    padding: var(--space-2) var(--space-3);
-  }
-
-  @media (min-width: 56rem) {
-    .wall span {
-      writing-mode: vertical-rl;
-      padding: var(--space-3) var(--space-2);
-    }
-  }
-
   .server-list {
     margin: 0;
   }
@@ -1069,14 +1139,12 @@ import { links, principles, repos, repoUrl } from "../data/site";
   }
 
   dt {
-    font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .server-list dd {
     margin: 0;
     color: var(--color-text-muted);
-    font-size: var(--text-sm);
   }
 
   .privacy-foot {
@@ -1091,11 +1159,14 @@ import { links, principles, repos, repoUrl } from "../data/site";
     padding: 0;
     margin: 0;
     list-style: none;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
   }
 
   .principle {
-    padding: var(--space-5) var(--space-4);
+    padding: var(--space-5);
+    border-radius: var(--radius-large);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
   }
 
   .principle h3 {
@@ -1111,10 +1182,10 @@ import { links, principles, repos, repoUrl } from "../data/site";
 
   .principle-number {
     display: block;
-    font-size: 1.75rem;
+    font-size: var(--text-sm);
     font-weight: 700;
     color: var(--color-brand-link);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-4);
   }
 
   /* Open source */
@@ -1123,12 +1194,26 @@ import { links, principles, repos, repoUrl } from "../data/site";
     gap: var(--space-3);
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--space-6);
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    margin: 0 0 var(--space-7);
+  }
+
+  @media (min-width: 40rem) {
+    .repos {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 62rem) {
+    .repos {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 
   .repo {
-    padding: var(--space-4) var(--space-5);
+    padding: var(--space-5);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
   }
 
   .repo p {
@@ -1137,10 +1222,10 @@ import { links, principles, repos, repoUrl } from "../data/site";
   }
 
   .repo-name {
-    font-family: var(--font-display);
-    font-weight: 700;
     display: inline-block;
-    margin-bottom: var(--space-1);
+    font-family: var(--font-display);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
   }
 
   .soon {
@@ -1148,10 +1233,12 @@ import { links, principles, repos, repoUrl } from "../data/site";
     font-weight: 500;
     font-size: 0.75rem;
     color: var(--color-text-muted);
-    background: var(--color-brand-soft);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-pill);
     padding: 0.1rem var(--space-2);
     margin-left: var(--space-1);
+    white-space: nowrap;
   }
 
   .repo .licence {
@@ -1168,7 +1255,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
 
   @media (min-width: 56rem) {
     .foss-split {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
@@ -1189,41 +1276,101 @@ import { links, principles, repos, repoUrl } from "../data/site";
 
   .contribute ol {
     padding-left: 1.4rem;
-    font-size: var(--text-sm);
   }
 
   .contribute li {
     margin-bottom: var(--space-2);
   }
 
-  /* Closing call to action */
-  .join {
-    background: var(--color-surface);
-    border-top: 1px solid var(--color-border);
-    padding-block: var(--space-7);
+  /* FAQ */
+  @media (min-width: 62rem) {
+    .faq-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+      gap: var(--space-8);
+      align-items: start;
+    }
   }
 
-  .join-inner {
+  .faq-list {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .faq {
+    border-radius: var(--radius-card);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+  }
+
+  .faq summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq summary::after {
+    content: "+";
+    flex: none;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-brand-link);
+  }
+
+  .faq[open] summary::after {
+    content: "−";
+  }
+
+  .faq p {
+    margin: 0;
+    padding: 0 var(--space-5) var(--space-5);
+    color: var(--color-text-muted);
+  }
+
+  /* Closing call to action */
+  .cta {
     display: grid;
     gap: var(--space-5);
     align-items: center;
+    padding: clamp(2rem, 1rem + 4vw, 4rem);
+    border-radius: var(--radius-large);
+    border: 1px solid var(--color-border);
+    background:
+      radial-gradient(
+        40rem 20rem at 100% 0%,
+        var(--color-brand-soft),
+        transparent 70%
+      ),
+      var(--color-surface);
   }
 
-  @media (min-width: 52rem) {
-    .join-inner {
-      grid-template-columns: 1.4fr auto;
+  @media (min-width: 56rem) {
+    .cta {
+      grid-template-columns: minmax(0, 1fr) auto;
       gap: var(--space-7);
     }
   }
 
-  .join h2 {
-    font-size: var(--text-2xl);
+  .cta h2 {
+    font-size: var(--text-section);
+    letter-spacing: -0.03em;
     margin-bottom: var(--space-3);
   }
 
-  .join p {
+  .cta p {
     margin: 0;
     max-width: 40rem;
     font-size: var(--text-lg);
+    color: var(--color-text-muted);
   }
 </style>
