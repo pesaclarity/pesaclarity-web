@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { links } from "../data/site";
+import { links, specPublic } from "../data/site";
 
 const updated = "26 October 2026";
 ---
@@ -18,9 +18,17 @@ const updated = "26 October 2026";
         <p>
           <strong>Draft, pending legal review.</strong> This is a plain-language
           summary of the privacy design in the{" "}
-          <a href={links.specPrivacy}>product spec</a>. It is not yet the
-          privacy policy. The full policy will be reviewed by a Kenyan data
-          protection lawyer before the app launches, and may change.
+          {specPublic ? (
+            <a href={links.specPrivacy}>product spec</a>
+          ) : (
+            <>
+              product spec (docs/spec/PRODUCT-SPEC.md, published before the
+              beta)
+            </>
+          )}
+          . It is not yet the privacy policy. The full policy will be reviewed
+          by a Kenyan data protection lawyer before the app launches, and may
+          change.
         </p>
         <p class="muted">Last updated {updated}.</p>
       </div>

@@ -29,7 +29,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
         <ul class="trust" role="list">
           <li>No bank logins</li>
           <li>Nothing leaves your phone</li>
-          <li>Every line of code public</li>
+          <li>Open-source licences</li>
         </ul>
       </div>
 
@@ -110,7 +110,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
           <dd class="number">7</dd>
         </div>
         <div>
-          <dt>Of the code you can read</dt>
+          <dt>Of the code open-source licensed</dt>
           <dd class="number">100%</dd>
         </div>
       </dl>
@@ -330,17 +330,24 @@ import { links, principles, repos, repoUrl } from "../data/site";
         </div>
         <p>
           An app that reads your money messages should prove what it does with
-          them. Every part of Pesa Clarity is open source, so anyone can confirm
-          that your data stays on your phone.
+          them. Every part of Pesa Clarity is open source. The parsers and this
+          site are public now; the app, server and models open before the beta,
+          so anyone can confirm that your data stays on your phone.
         </p>
       </div>
 
       <ul class="repos" role="list">
         {repos.map((r) => (
           <li class="card repo">
-            <a class="repo-name" href={repoUrl(r.name)}>
-              {r.name}
-            </a>
+            {r.public ? (
+              <a class="repo-name" href={repoUrl(r.name)}>
+                {r.name}
+              </a>
+            ) : (
+              <span class="repo-name">
+                {r.name} <span class="soon">Opens before the beta</span>
+              </span>
+            )}
             <p>{r.what}</p>
             <p class="licence">{r.licence}</p>
           </li>
@@ -1134,6 +1141,17 @@ import { links, principles, repos, repoUrl } from "../data/site";
     font-weight: 700;
     display: inline-block;
     margin-bottom: var(--space-1);
+  }
+
+  .soon {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    background: var(--color-brand-soft);
+    border-radius: var(--radius-pill);
+    padding: 0.1rem var(--space-2);
+    margin-left: var(--space-1);
   }
 
   .repo .licence {
