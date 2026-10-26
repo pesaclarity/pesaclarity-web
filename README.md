@@ -53,7 +53,7 @@ The build is plain static files in `dist/` served from the site root, so any sta
 
 - **Netlify:** import the repository; `netlify.toml` sets the build, Node 24 and security headers, and Netlify's `URL` is used as the site address unless `SITE_URL` is set.
 - **Cloudflare Pages:** build command `npm run build`, output directory `dist`, environment variables `NODE_VERSION=24` and `SITE_URL=<your domain>`.
-- **GitHub Pages:** serve from a custom domain or the `pesaclarity.github.io` repository, since the site expects to live at `/`. Use `actions/upload-pages-artifact` and `actions/deploy-pages` with `SITE_URL` set; no secrets are needed.
+- **GitHub Pages (used now):** `.github/workflows/pages.yml` builds and deploys on every push to `main`. It sets `SITE_URL` and `BASE_PATH` from the Pages settings, so the site works at `https://pesaclarity.github.io/pesaclarity-web/` and moves to a custom domain without code changes. Needs the repository public and Settings > Pages > Source set to "GitHub Actions".
 
 Most hosts serve `404.html` for missing paths automatically.
 

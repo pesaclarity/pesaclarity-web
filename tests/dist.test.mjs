@@ -7,6 +7,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, relative } from "node:path";
 
 const dist = new URL("../dist/", import.meta.url).pathname;
+const base = (process.env.BASE_PATH ?? "").replace(/\/+$/, "");
 
 function htmlFiles(dir) {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -43,7 +44,10 @@ for (const { name, html } of pages) {
         new RegExp(`<meta property="${prop}" content="[^"]+"`),
       );
     }
-    assert.match(html, /<link rel="icon" href="\/favicon.svg"/);
+    assert.ok(
+      html.includes(`<link rel="icon" href="${base}/favicon.svg"`),
+      "favicon link",
+    );
   });
 
   test(`${name}: ships no JavaScript`, () => {
@@ -84,7 +88,7 @@ test("sitemap lists the public pages and not the 404", () => {
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
     (m) => new URL(m[1]).pathname,
   );
-  assert.deepEqual(locs.sort(), ["/", "/privacy/"]);
+  assert.deepEqual(locs.sort(), [`${base}/`, `${base}/privacy/`]);
   assert.match(
     readFileSync(join(dist, "robots.txt"), "utf8"),
     /Sitemap: https?:\/\/\S+\/sitemap-index\.xml/,

@@ -7,6 +7,7 @@ const site =
 
 export default defineConfig({
   site,
+  base: process.env.BASE_PATH ?? "/",
   output: "static",
   trailingSlash: "ignore",
   build: { format: "directory" },
