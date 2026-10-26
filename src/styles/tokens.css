@@ -31,7 +31,8 @@
   --font-body:
     "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-  --radius-card: 24px;
+  --radius-card: 20px;
+  --radius-large: 28px;
   --radius-small: 12px;
   --radius-pill: 999px;
   --size-touch-target: 44px;
@@ -43,18 +44,20 @@
   --space-5: 1.5rem;
   --space-6: 2rem;
   --space-7: 3rem;
-  --space-8: 4rem;
+  --space-8: 5rem;
 
   --text-sm: 0.9375rem;
   --text-base: 1.0625rem;
   --text-lg: 1.25rem;
   --text-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
   --text-2xl: clamp(2.2rem, 1.4rem + 3.2vw, 3.9rem);
+  --text-hero: clamp(2.5rem, 1.2rem + 4.4vw, 5rem);
+  --text-section: clamp(1.9rem, 1.2rem + 2.4vw, 3rem);
   --text-number: clamp(3rem, 2.2rem + 3vw, 4.25rem);
 
-  --width-content: 76rem;
+  --width-content: 90rem;
   --width-prose: 42rem;
-  --gutter: clamp(1rem, 4vw, 2rem);
+  --gutter: clamp(1.25rem, 5vw, 4rem);
 }
 
 @media (prefers-color-scheme: dark) {

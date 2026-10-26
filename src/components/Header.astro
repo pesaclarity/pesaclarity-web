@@ -13,6 +13,7 @@ const nav = [
   { href: `${base}#beliefs`, label: "Beliefs" },
   { href: `${base}#privacy`, label: "Privacy" },
   { href: `${base}#open-source`, label: "Open source" },
+  { href: `${base}#faq`, label: "FAQ" },
 ];
 ---
 
@@ -43,8 +44,12 @@ const nav = [
 
 <style>
   .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
     border-bottom: 1px solid var(--color-border);
-    background: var(--color-background);
+    background: color-mix(in srgb, var(--color-background) 85%, transparent);
+    backdrop-filter: saturate(1.4) blur(12px);
   }
 
   .header-inner {
@@ -104,7 +109,7 @@ const nav = [
     padding-inline: var(--space-4);
   }
 
-  @media (max-width: 52rem) {
+  @media (max-width: 60rem) {
     .nav-section {
       display: none;
     }
