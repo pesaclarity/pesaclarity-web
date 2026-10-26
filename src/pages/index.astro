@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/paths";
 import Base from "../layouts/Base.astro";
 import { links, principles, repos, repoUrl } from "../data/site";
 ---
@@ -199,7 +200,7 @@ import { links, principles, repos, repoUrl } from "../data/site";
       </div>
       <p class="privacy-foot">
         No ads, no analytics, no third-party trackers, in the app or on this
-        site. <a href="/privacy/">Read the privacy summary</a>.
+        site. <a href={withBase("/privacy/")}>Read the privacy summary</a>.
       </p>
     </div>
   </section>
