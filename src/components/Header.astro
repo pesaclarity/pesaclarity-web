@@ -7,7 +7,7 @@ interface Props {
   onHome: boolean;
 }
 const { onHome } = Astro.props;
-const base = onHome ? "" : "/";
+const base = onHome ? "" : withBase("/");
 const nav = [
   { href: `${base}#what`, label: "What it is" },
   { href: `${base}#beliefs`, label: "Beliefs" },

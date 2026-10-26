@@ -106,3 +106,15 @@ test("stylesheets use only self-hosted fonts", () => {
   assert.doesNotMatch(css, /url\((["']?)(https?:)?\/\//);
   assert.doesNotMatch(css, /@import/);
 });
+
+test("internal links stay under the base path", () => {
+  for (const { name, html } of pages) {
+    for (const [, href] of html.matchAll(/<a\b[^>]*\shref="([^"]+)"/g)) {
+      if (/^(https?:|mailto:|#)/.test(href)) continue;
+      assert.ok(
+        href.startsWith(`${base}/`),
+        `${name}: link ${href} is outside ${base || "/"}`,
+      );
+    }
+  }
+});
