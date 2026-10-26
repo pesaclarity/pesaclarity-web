@@ -14,11 +14,6 @@ const screens = [
     alt: "Plan screen showing planned income split by debt, tax, living and school, and spending by category",
   },
   {
-    file: "goals",
-    name: "Goals",
-    alt: "Goals screen with the debt-free date, debts and savings goals",
-  },
-  {
     file: "debts",
     name: "Debts",
     alt: "Debts screen with the payoff strategy, this payday's split, the Fuliza tracker and a what-if slider",
@@ -37,14 +32,9 @@ const screens = [
   aria-labelledby="screens-title"
 >
   <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Inside the app</p>
-      <h2 id="screens-title">Seven screens instead of a 17-tab spreadsheet</h2>
-      <p>
-        Each tab answers one question. Every number taps through to the
-        transactions behind it.
-      </p>
-    </div>
+    <h2 id="screens-title" class="label">
+      Screens
+    </h2>
 
     <ul class="gallery" role="list">
       {screens.map((s) => (
@@ -65,10 +55,17 @@ const screens = [
 </section>
 
 <style>
+  .label {
+    font-size: var(--text-section);
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin-bottom: var(--space-6);
+  }
+
   .gallery {
     display: grid;
     gap: var(--space-5);
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     list-style: none;
     padding: 0;
     margin: 0;
@@ -94,7 +91,7 @@ const screens = [
     font-weight: 600;
   }
 
-  @media (max-width: 62rem) {
+  @media (max-width: 52rem) {
     .gallery {
       display: flex;
       gap: var(--space-4);

@@ -9,11 +9,10 @@ interface Props {
 const { onHome } = Astro.props;
 const base = onHome ? "" : withBase("/");
 const nav = [
-  { href: `${base}#what`, label: "What it is" },
+  { href: `${base}#what`, label: "What it does" },
   { href: `${base}#screens`, label: "Screens" },
-  { href: `${base}#insights`, label: "Insights" },
+  { href: `${base}#features`, label: "Features" },
   { href: `${base}#privacy`, label: "Privacy" },
-  { href: `${base}#iphone`, label: "iPhone" },
   { href: `${base}#faq`, label: "FAQ" },
 ];
 ---
@@ -35,7 +34,7 @@ const nav = [
         ))}
         <li>
           <a class="button button-primary nav-cta" href={links.waitlist}>
-            Join the beta
+            Join the waitlist
           </a>
         </li>
       </ul>
