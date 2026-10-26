@@ -10,9 +10,10 @@ const { onHome } = Astro.props;
 const base = onHome ? "" : withBase("/");
 const nav = [
   { href: `${base}#what`, label: "What it is" },
-  { href: `${base}#beliefs`, label: "Beliefs" },
+  { href: `${base}#screens`, label: "Screens" },
+  { href: `${base}#insights`, label: "Insights" },
   { href: `${base}#privacy`, label: "Privacy" },
-  { href: `${base}#open-source`, label: "Open source" },
+  { href: `${base}#iphone`, label: "iPhone" },
   { href: `${base}#faq`, label: "FAQ" },
 ];
 ---
@@ -109,7 +110,7 @@ const nav = [
     padding-inline: var(--space-4);
   }
 
-  @media (max-width: 60rem) {
+  @media (max-width: 64rem) {
     .nav-section {
       display: none;
     }

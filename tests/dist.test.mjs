@@ -70,11 +70,11 @@ for (const { name, html } of pages) {
   });
 }
 
-test("privacy summary is marked as a draft pending legal review", () => {
-  const privacy = pages.find((p) => p.name === "privacy/index.html");
-  assert.ok(privacy);
-  assert.match(privacy.html, /Draft, pending legal review/);
-  assert.match(privacy.html, /PRODUCT-SPEC\.md/);
+test("public pages carry no internal draft notes or doc paths", () => {
+  for (const { name, html } of pages) {
+    assert.doesNotMatch(html, /\bdraft\b|pending legal review/i, name);
+    assert.doesNotMatch(html, /PRODUCT-SPEC/, name);
+  }
 });
 
 test("404 page is not indexed", () => {

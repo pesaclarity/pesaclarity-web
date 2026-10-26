@@ -1,0 +1,591 @@
+---
+/** Four illustrative app screens beside the home screen in the hero. */
+---
+
+<section
+  id="screens"
+  class="section section-alt"
+  aria-labelledby="screens-title"
+>
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Inside the app</p>
+      <h2 id="screens-title">Seven screens instead of a 17-tab spreadsheet</h2>
+      <p>
+        Each tab answers one question. Every number taps through to the
+        transactions behind it.
+      </p>
+    </div>
+
+    <ul class="gallery" role="list">
+      <li>
+        <div class="device" aria-hidden="true">
+          <div class="scr">
+            <p class="scr-title">Activity</p>
+            <p class="search">Search payees, amounts, tags</p>
+            <p class="group">Today</p>
+            <div class="row">
+              <span class="ico ico-food">J</span>
+              <span class="who">
+                Java House<small>Eating out</small>
+              </span>
+              <span class="amt">−450</span>
+            </div>
+            <div class="row">
+              <span class="ico ico-shop">N</span>
+              <span class="who">
+                Naivas<small>Groceries</small>
+              </span>
+              <span class="amt">−2,340</span>
+            </div>
+            <div class="row">
+              <span class="ico ico-own">K</span>
+              <span class="who">
+                To my KCB<small>Not spending</small>
+              </span>
+              <span class="amt muted">5,000</span>
+            </div>
+            <p class="group">Yesterday</p>
+            <div class="row">
+              <span class="ico ico-in">S</span>
+              <span class="who">
+                Salary<small>Income</small>
+              </span>
+              <span class="amt in">+85,000</span>
+            </div>
+            <div class="prompt">
+              <b>0700 000 000</b> sent you 1,500. Who is this?
+              <span class="chip">Name payee</span>
+            </div>
+          </div>
+        </div>
+        <h3>Activity</h3>
+        <p>
+          Where did my money go? Moves between your own accounts never count as
+          spending.
+        </p>
+      </li>
+
+      <li>
+        <div class="device" aria-hidden="true">
+          <div class="scr">
+            <p class="scr-title">Plan · November</p>
+            <div class="split">
+              <p>
+                Expected income <b>120,000</b>
+              </p>
+              <div class="stack">
+                <span style="--w: 30%; --c: var(--color-brand)"></span>
+                <span style="--w: 38%; --c: #c98a5a"></span>
+                <span style="--w: 12%; --c: #7a8fb8"></span>
+                <span style="--w: 20%; --c: var(--color-success)"></span>
+              </div>
+              <p class="legend">Debt · Living · School · Savings</p>
+            </div>
+            <div class="cat">
+              <span>Rent</span>
+              <span class="st st-done">Done</span>
+            </div>
+            <div class="cat">
+              <span>Groceries</span>
+              <span class="st st-prog">62%</span>
+            </div>
+            <div class="cat">
+              <span>Transport</span>
+              <span class="st st-prog">48%</span>
+            </div>
+            <div class="cat">
+              <span>Eating out</span>
+              <span class="st st-over">Over</span>
+            </div>
+            <div class="cat">
+              <span>School fees</span>
+              <span class="st">Due 5th</span>
+            </div>
+            <div class="surplus">Surplus 8,200 → debt 5,000, savings 3,200</div>
+          </div>
+        </div>
+        <h3>Plan</h3>
+        <p>
+          What is coming, and is it covered? Bills, set-asides and where any
+          surplus goes.
+        </p>
+      </li>
+
+      <li>
+        <div class="device" aria-hidden="true">
+          <div class="scr">
+            <p class="scr-title">Debts</p>
+            <div class="hero-num">
+              <small>Debt-free by</small>
+              <b>Aug 2028</b>
+              <div class="bar">
+                <span style="--w: 38%"></span>
+              </div>
+              <small>38% paid · avalanche</small>
+            </div>
+            <div class="cat">
+              <span>
+                KCB loan<small>13% a year</small>
+              </span>
+              <b>180,000</b>
+            </div>
+            <div class="cat">
+              <span>
+                Fuliza<small>9 draws this month</small>
+              </span>
+              <b>3,200</b>
+            </div>
+            <div class="cat">
+              <span>
+                Mum<small>Family · no interest</small>
+              </span>
+              <b>20,000</b>
+            </div>
+            <div class="whatif">
+              <small>What if I add 5,000 a month?</small>
+              <div class="slider">
+                <span></span>
+              </div>
+              <b>Debt-free Feb 2028 · saves 14,600</b>
+            </div>
+          </div>
+        </div>
+        <h3>Debts</h3>
+        <p>
+          Bank, Fuliza and family loans in one plan, with a payday split and
+          what-ifs.
+        </p>
+      </li>
+
+      <li>
+        <div class="device" aria-hidden="true">
+          <div class="scr">
+            <p class="scr-title">Insights</p>
+            <div class="score">
+              <div class="ring" style="--p: 64">
+                <b>64</b>
+              </div>
+              <div>
+                <b>Coping</b>
+                <small>Up 6 from October</small>
+                <small class="tip">Biggest lift: fewer Fuliza draws</small>
+              </div>
+            </div>
+            <p class="group">Leaks this month · 6,400 (9%)</p>
+            <div class="hbar">
+              <span style="--w: 90%">Friends and family</span>
+              <b>2,900</b>
+            </div>
+            <div class="hbar">
+              <span style="--w: 62%">Lifestyle</span>
+              <b>2,000</b>
+            </div>
+            <div class="hbar">
+              <span style="--w: 34%">Fees</span>
+              <b>1,100</b>
+            </div>
+            <div class="hbar">
+              <span style="--w: 14%">Fuliza</span>
+              <b>400</b>
+            </div>
+          </div>
+        </div>
+        <h3>Insights</h3>
+        <p>
+          What should I change? A health score, your leaks, and the one action
+          that helps most.
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    display: grid;
+    gap: var(--space-6) var(--space-5);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .gallery > li {
+    min-width: 0;
+  }
+
+  @media (max-width: 40rem) {
+    .gallery {
+      display: flex;
+      gap: var(--space-4);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      margin-inline: calc(var(--gutter) * -1);
+      padding: 0 var(--gutter) var(--space-3);
+      scroll-padding-inline: var(--gutter);
+    }
+
+    .gallery > li {
+      flex: 0 0 80%;
+      scroll-snap-align: start;
+    }
+  }
+
+  .gallery h3 {
+    font-size: var(--text-lg);
+    margin: var(--space-5) 0 var(--space-1);
+  }
+
+  .gallery > li > p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .device {
+    max-width: 17.5rem;
+    margin-inline: auto;
+    padding: 0.4rem;
+    border-radius: 2.4rem;
+    background: var(--color-device);
+    box-shadow: 0 30px 60px -30px rgb(58 47 51 / 0.4);
+  }
+
+  .scr {
+    min-height: 29rem;
+    overflow: hidden;
+    border-radius: 2rem;
+    background: var(--color-background);
+    padding: var(--space-5) var(--space-4);
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .scr p {
+    margin: 0;
+  }
+
+  .scr small {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.68rem;
+  }
+
+  .scr-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: var(--space-3) !important;
+  }
+
+  .search {
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .group {
+    margin: var(--space-4) 0 var(--space-2) !important;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ico {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 9px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.7rem;
+  }
+
+  .ico-food {
+    background: #c98a5a;
+  }
+
+  .ico-shop {
+    background: #7a8fb8;
+  }
+
+  .ico-own {
+    background: #9a8c90;
+  }
+
+  .ico-in {
+    background: var(--color-success);
+  }
+
+  .who {
+    flex: 1;
+    min-width: 0;
+    font-weight: 600;
+  }
+
+  .who small {
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .amt {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  .amt.muted {
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .amt.in {
+    color: var(--color-success-text);
+  }
+
+  .prompt {
+    margin-top: var(--space-4);
+    padding: var(--space-3);
+    border-radius: 14px;
+    background: var(--color-brand-soft);
+  }
+
+  .chip {
+    display: table;
+    margin-top: var(--space-2);
+    padding: 0.15rem var(--space-3);
+    border-radius: var(--radius-pill);
+    background: var(--color-brand);
+    color: var(--color-on-brand);
+    font-weight: 600;
+  }
+
+  .split {
+    padding: var(--space-3);
+    border-radius: 14px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    margin-bottom: var(--space-3);
+  }
+
+  .split b {
+    float: right;
+    font-family: var(--font-display);
+  }
+
+  .stack {
+    display: flex;
+    height: 8px;
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    margin: var(--space-2) 0;
+  }
+
+  .stack span {
+    width: var(--w);
+    background: var(--c);
+  }
+
+  .legend {
+    color: var(--color-text-muted);
+    font-size: 0.68rem;
+  }
+
+  .cat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cat > b {
+    font-family: var(--font-display);
+  }
+
+  .st {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.1rem var(--space-2);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+  }
+
+  .st-done {
+    color: var(--color-success-text);
+  }
+
+  .st-prog {
+    color: var(--color-text);
+  }
+
+  .st-over {
+    color: var(--color-brand-link);
+    background: var(--color-brand-soft);
+    border-color: transparent;
+  }
+
+  .surplus {
+    margin-top: var(--space-3);
+    padding: var(--space-3);
+    border-radius: 14px;
+    background: color-mix(
+      in srgb,
+      var(--color-success) 12%,
+      var(--color-surface)
+    );
+    font-weight: 600;
+  }
+
+  .hero-num {
+    padding: var(--space-4);
+    border-radius: 16px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    margin-bottom: var(--space-2);
+  }
+
+  .hero-num b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+    color: var(--color-brand-link);
+  }
+
+  .bar,
+  .slider {
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--color-brand-soft);
+    margin: var(--space-2) 0;
+    overflow: hidden;
+  }
+
+  .bar span {
+    display: block;
+    height: 100%;
+    width: var(--w);
+    background: var(--color-brand);
+  }
+
+  .whatif {
+    margin-top: var(--space-3);
+    padding: var(--space-3);
+    border-radius: 14px;
+    background: var(--color-brand-soft);
+  }
+
+  .slider {
+    position: relative;
+    background: var(--color-surface);
+    overflow: visible;
+  }
+
+  .slider span {
+    position: absolute;
+    left: 55%;
+    top: -4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-brand);
+  }
+
+  .score {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border-radius: 16px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+  }
+
+  .ring {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, var(--color-surface) 58%, transparent 60%),
+      conic-gradient(
+        var(--color-brand) calc(var(--p) * 1%),
+        var(--color-brand-soft) 0
+      );
+  }
+
+  .ring b {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+  }
+
+  .tip {
+    color: var(--color-brand-link) !important;
+    font-weight: 600;
+  }
+
+  .hbar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .hbar span {
+    position: relative;
+    flex: 1;
+    padding: 0.25rem var(--space-2);
+    z-index: 0;
+    white-space: nowrap;
+  }
+
+  .hbar span::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--w);
+    border-radius: 6px;
+    background: var(--color-brand-soft);
+    z-index: -1;
+  }
+
+  .trend {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-2);
+    height: 3.5rem;
+  }
+
+  .trend span {
+    flex: 1;
+    height: var(--h);
+    border-radius: 6px 6px 2px 2px;
+    background: var(--color-brand-soft);
+  }
+
+  .trend span:last-child {
+    background: var(--color-brand);
+  }
+
+  .hbar b {
+    font-family: var(--font-display);
+  }
+</style>

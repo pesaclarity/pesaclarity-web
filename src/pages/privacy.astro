@@ -1,37 +1,19 @@
 ---
 import Base from "../layouts/Base.astro";
-import { links, specPublic } from "../data/site";
+import { links } from "../data/site";
 
 const updated = "26 October 2026";
 ---
 
 <Base
-  title="Privacy summary (draft)"
-  description="A plain-language summary of what Pesa Clarity keeps on your phone, what its server holds, and your rights. Draft, pending legal review."
+  title="Privacy policy"
+  description="What Pesa Clarity keeps on your phone, what its server holds, and your rights."
 >
   <article class="container privacy-page">
     <div class="prose">
       <p class="eyebrow">Privacy</p>
-      <h1>Privacy summary</h1>
-
-      <div class="draft-banner" role="note">
-        <p>
-          <strong>Draft, pending legal review.</strong> This is a plain-language
-          summary of the privacy design in the{" "}
-          {specPublic ? (
-            <a href={links.specPrivacy}>product spec</a>
-          ) : (
-            <>
-              product spec (docs/spec/PRODUCT-SPEC.md, published before the
-              beta)
-            </>
-          )}
-          . It is not yet the privacy policy. The full policy will be reviewed
-          by a Kenyan data protection lawyer before the app launches, and may
-          change.
-        </p>
-        <p class="muted">Last updated {updated}.</p>
-      </div>
+      <h1>Privacy policy</h1>
+      <p class="muted">Last updated {updated}.</p>
 
       <h2>The short version</h2>
       <p>
@@ -112,9 +94,8 @@ const updated = "26 October 2026";
       <h2>Questions</h2>
       <p>
         {/* TODO: add the data protection contact once the controller is registered with the ODPC. */}
-        A contact for privacy requests will be published with the full policy.
-        Until then, ask in public on <a href={links.github}>GitHub</a>, or
-        report a security issue privately using the security policy there.
+        Ask in public on <a href={links.github}>GitHub</a>, or report a security
+        issue privately using the security policy there.
       </p>
     </div>
   </article>
@@ -127,10 +108,6 @@ const updated = "26 October 2026";
 
   h2 {
     margin-top: var(--space-6);
-  }
-
-  .draft-banner p:last-child {
-    margin: 0;
   }
 
   dt {

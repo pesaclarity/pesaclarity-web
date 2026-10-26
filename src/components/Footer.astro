@@ -1,7 +1,7 @@
 ---
 import { withBase } from "../lib/paths";
 import Mark from "./Mark.astro";
-import { links, specPublic } from "../data/site";
+import { links } from "../data/site";
 
 const year = new Date().getFullYear();
 ---
@@ -18,16 +18,11 @@ const year = new Date().getFullYear();
     <nav aria-label="Footer">
       <ul>
         <li>
-          <a href={withBase("/privacy/")}>Privacy summary</a>
+          <a href={withBase("/privacy/")}>Privacy policy</a>
         </li>
         <li>
           <a href={links.github}>GitHub</a>
         </li>
-        {specPublic && (
-          <li>
-            <a href={links.spec}>Product spec</a>
-          </li>
-        )}
         <li>
           <a href={links.webSource}>Website source</a>
         </li>
