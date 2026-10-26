@@ -40,50 +40,14 @@ import ScreenGallery from "../components/ScreenGallery.astro";
 
       <figure class="showcase" aria-labelledby="phone-caption">
         <div class="glow" aria-hidden="true"></div>
-        <div class="phone">
-          <div class="screen">
-            <div class="status-bar" aria-hidden="true">
-              <span>9:41</span>
-              <span class="island"></span>
-              <span>100%</span>
-            </div>
-            <div class="notice" aria-hidden="true">
-              <span class="notice-icon">M</span>
-              <div>
-                <p class="notice-title">Java House · Eating out</p>
-                <p class="notice-sub">From M-Pesa SMS · read on this phone</p>
-              </div>
-              <span class="number">−450</span>
-            </div>
-            <div class="today">
-              <p class="today-label">Safe to spend today</p>
-              <p class="today-amount number">
-                <span class="currency">KES</span>1,200
-              </p>
-              <p class="today-note">3,450 left this week</p>
-              <div class="meter" aria-hidden="true">
-                <span></span>
-              </div>
-            </div>
-            <ul class="mini-list" role="list">
-              <li>
-                <span>Rent, due Friday</span>
-                <span class="number">18,000</span>
-                <span class="tag tag-ok">Covered</span>
-              </li>
-              <li>
-                <span>Leaks this month</span>
-                <span class="number">6,400</span>
-                <span class="tag">9% of income</span>
-              </li>
-              <li>
-                <span>Debt-free by</span>
-                <span class="number">Aug 2028</span>
-                <span class="tag">On track</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <img
+          class="hero-screen"
+          src={withBase("/screens/home.webp")}
+          width="390"
+          height="844"
+          alt="Pesa Clarity home screen showing safe to spend today, money left this month and upcoming bills"
+          fetchpriority="high"
+        />
         <figcaption id="phone-caption" class="visually-hidden">
           The home screen answers "how am I doing today?". Figures are
           illustrative.
@@ -126,36 +90,13 @@ import ScreenGallery from "../components/ScreenGallery.astro";
       </div>
 
       <ul class="bento" role="list">
-        <li class="tile tile-spend">
+        <li class="tile">
           <div class="tile-text">
             <h3>What can I spend today?</h3>
             <p>
               A daily limit from what is left of your budget, with a different
               one for weekends.
             </p>
-          </div>
-          <div class="visual spend" aria-hidden="true">
-            <p class="spend-label">You can spend</p>
-            <p class="spend-big number">1,200</p>
-            <div class="week">
-              {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
-                <span class={i < 2 ? "done" : i === 2 ? "now" : ""}>{d}</span>
-              ))}
-            </div>
-            <dl class="limits">
-              <div>
-                <dt>Weekdays</dt>
-                <dd class="number">1,200</dd>
-              </div>
-              <div>
-                <dt>Weekends</dt>
-                <dd class="number">1,800</dd>
-              </div>
-              <div>
-                <dt>Left this week</dt>
-                <dd class="number">3,450</dd>
-              </div>
-            </dl>
           </div>
         </li>
         <li class="tile">
@@ -166,20 +107,6 @@ import ScreenGallery from "../components/ScreenGallery.astro";
               payment would fail.
             </p>
           </div>
-          <ul class="visual upcoming" aria-hidden="true" role="list">
-            <li>
-              <span>School fees</span>
-              <span class="warn">in 3 days</span>
-            </li>
-            <li>
-              <span>Rent</span>
-              <span>Friday</span>
-            </li>
-            <li>
-              <span>Fuliza repay</span>
-              <span>28 Oct</span>
-            </li>
-          </ul>
         </li>
         <li class="tile">
           <div class="tile-text">
@@ -189,34 +116,14 @@ import ScreenGallery from "../components/ScreenGallery.astro";
               small amounts stop hiding.
             </p>
           </div>
-          <div class="visual bars" aria-hidden="true">
-            <span style="--w: 82%">
-              Transfers <b>12%</b>
-            </span>
-            <span style="--w: 58%">
-              Lifestyle <b>8%</b>
-            </span>
-            <span style="--w: 30%">
-              Fuliza <b>4%</b>
-            </span>
-          </div>
         </li>
-        <li class="tile tile-wide">
+        <li class="tile">
           <div class="tile-text">
             <h3>When will I be debt-free?</h3>
             <p>
               Bank loans, Fuliza and family loans in one plan, with a realistic
               date and a split for each payday.
             </p>
-          </div>
-          <div class="visual debt" aria-hidden="true">
-            <div class="debt-row">
-              <span>62% paid off</span>
-              <span class="number">Aug 2028</span>
-            </div>
-            <div class="meter meter-soft">
-              <span style="--w: 62%"></span>
-            </div>
           </div>
         </li>
       </ul>
@@ -573,6 +480,15 @@ import ScreenGallery from "../components/ScreenGallery.astro";
     place-items: center;
   }
 
+  .hero-screen {
+    position: relative;
+    width: min(100%, 22rem);
+    height: auto;
+    border-radius: 2.75rem;
+    border: 8px solid var(--color-device);
+    box-shadow: 0 50px 100px -40px rgb(58 47 51 / 0.45);
+  }
+
   .glow {
     position: absolute;
     width: min(30rem, 90%);
@@ -583,173 +499,6 @@ import ScreenGallery from "../components/ScreenGallery.astro";
       color-mix(in srgb, var(--color-brand) 22%, transparent),
       transparent 65%
     );
-  }
-
-  .phone {
-    position: relative;
-    width: min(100%, 21rem);
-    padding: 0.5rem;
-    border-radius: 3rem;
-    background: var(--color-device);
-    box-shadow:
-      0 50px 100px -40px rgb(58 47 51 / 0.45),
-      inset 0 0 0 1px rgb(255 255 255 / 0.08);
-  }
-
-  .screen {
-    overflow: hidden;
-    border-radius: 2.5rem;
-    background: var(--color-surface);
-    padding: var(--space-3) var(--space-4) var(--space-5);
-  }
-
-  .screen p {
-    margin: 0;
-  }
-
-  .status-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0 var(--space-2) var(--space-3);
-  }
-
-  .island {
-    width: 5.5rem;
-    height: 1.4rem;
-    border-radius: var(--radius-pill);
-    background: var(--color-device);
-  }
-
-  .notice {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-3);
-    margin-bottom: var(--space-3);
-    border-radius: 18px;
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    font-size: 0.78rem;
-    line-height: 1.35;
-  }
-
-  .notice .number {
-    margin-left: auto;
-    font-weight: 700;
-  }
-
-  .notice-icon {
-    flex: none;
-    display: grid;
-    place-items: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
-    background: var(--color-success);
-    color: #ffffff;
-    font-weight: 700;
-  }
-
-  .notice-title {
-    font-weight: 600;
-  }
-
-  .notice-sub {
-    color: var(--color-success-text);
-    font-size: 0.72rem;
-  }
-
-  .today {
-    background: linear-gradient(
-      150deg,
-      var(--color-brand),
-      color-mix(in srgb, var(--color-brand) 78%, #000000)
-    );
-    color: var(--color-on-brand);
-    border-radius: 22px;
-    padding: var(--space-4) var(--space-4) var(--space-5);
-  }
-
-  .today-label {
-    font-size: 0.85rem;
-    font-weight: 500;
-    opacity: 0.9;
-  }
-
-  .today-amount {
-    font-size: 3.1rem;
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin-block: var(--space-1) !important;
-  }
-
-  .currency {
-    font-size: 0.36em;
-    font-weight: 500;
-    letter-spacing: 0;
-    vertical-align: 0.95em;
-    margin-right: 0.35rem;
-  }
-
-  .today-note {
-    font-size: 0.8rem;
-    opacity: 0.9;
-  }
-
-  .meter {
-    height: 6px;
-    border-radius: var(--radius-pill);
-    background: rgb(255 255 255 / 0.3);
-    margin-top: var(--space-3);
-    overflow: hidden;
-  }
-
-  .meter span {
-    display: block;
-    height: 100%;
-    width: var(--w, 35%);
-    background: currentColor;
-    border-radius: inherit;
-  }
-
-  .mini-list {
-    list-style: none;
-    padding: 0;
-    margin: var(--space-2) 0 0;
-  }
-
-  .mini-list li {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0 var(--space-3);
-    padding: var(--space-3) var(--space-1);
-    border-bottom: 1px solid var(--color-border);
-    font-size: 0.85rem;
-  }
-
-  .mini-list li:last-child {
-    border-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .mini-list .number {
-    font-weight: 700;
-    text-align: right;
-  }
-
-  .tag {
-    grid-column: 1 / -1;
-    color: var(--color-text-muted);
-    font-size: 0.78rem;
-  }
-
-  .tag-ok {
-    color: var(--color-success-text);
-    font-weight: 600;
   }
 
   /* Stats */
@@ -808,17 +557,15 @@ import ScreenGallery from "../components/ScreenGallery.astro";
     margin: 0;
   }
 
-  @media (min-width: 56rem) {
+  @media (min-width: 40rem) {
     .bento {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
 
-    .tile-spend {
-      grid-row: span 2;
-    }
-
-    .tile-wide {
-      grid-column: span 2;
+  @media (min-width: 62rem) {
+    .bento {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 
@@ -842,168 +589,6 @@ import ScreenGallery from "../components/ScreenGallery.astro";
   .tile-text p {
     margin: 0;
     color: var(--color-text-muted);
-  }
-
-  .tile-spend {
-    background: linear-gradient(
-      180deg,
-      var(--color-surface),
-      var(--color-brand-soft)
-    );
-  }
-
-  .visual {
-    margin: 0;
-    padding: var(--space-4);
-    border-radius: var(--radius-card);
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    font-size: var(--text-sm);
-  }
-
-  .spend {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--space-6) var(--space-5);
-    background: var(--color-surface);
-  }
-
-  .spend p {
-    margin: 0;
-  }
-
-  .spend-label {
-    color: var(--color-text-muted);
-  }
-
-  .spend-big {
-    font-size: clamp(3rem, 2rem + 3vw, 4.5rem);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: var(--color-brand-link);
-    margin-block: var(--space-2) var(--space-5) !important;
-  }
-
-  .week {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: var(--space-1);
-  }
-
-  .week span {
-    text-align: center;
-    padding: var(--space-2) 0;
-    border-radius: 10px;
-    background: var(--color-background);
-    font-weight: 600;
-    color: var(--color-text-muted);
-  }
-
-  .week .done {
-    background: var(--color-brand-soft);
-    color: var(--color-brand-link);
-  }
-
-  .week .now {
-    background: var(--color-brand);
-    color: var(--color-on-brand);
-  }
-
-  .limits {
-    display: grid;
-    gap: var(--space-2);
-    margin: var(--space-5) 0 0;
-    padding-top: var(--space-4);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .limits div {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .limits dt {
-    font-weight: 400;
-    color: var(--color-text-muted);
-  }
-
-  .limits dd {
-    margin: 0;
-    font-weight: 600;
-  }
-
-  .upcoming {
-    list-style: none;
-  }
-
-  .upcoming li {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-3);
-    padding: var(--space-2) 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .upcoming li:first-child {
-    padding-top: 0;
-  }
-
-  .upcoming li:last-child {
-    border-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .warn {
-    color: var(--color-warning);
-    font-weight: 700;
-  }
-
-  .bars {
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .bars span {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.3rem var(--space-3);
-    font-weight: 500;
-    z-index: 0;
-  }
-
-  .bars span::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: var(--w);
-    border-radius: 8px;
-    background: var(--color-brand-soft);
-    z-index: -1;
-  }
-
-  .debt {
-    padding: var(--space-5);
-  }
-
-  .debt-row {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 600;
-  }
-
-  .debt-row .number {
-    font-size: var(--text-lg);
-    color: var(--color-brand-link);
-  }
-
-  .meter-soft {
-    background: var(--color-brand-soft);
-    height: 12px;
-    color: var(--color-brand);
   }
 
   /* Steps */
