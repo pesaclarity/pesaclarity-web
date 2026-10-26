@@ -63,7 +63,6 @@ export interface Repo {
 export const repos: readonly Repo[] = [
   {
     name: "pesaclarity-app",
-    codename: "mfuko",
     what: "The Flutter Android app and its on-phone engine",
     licence: "AGPL-3.0",
   },
