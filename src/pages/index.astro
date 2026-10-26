@@ -2,6 +2,9 @@
 import { withBase } from "../lib/paths";
 import Base from "../layouts/Base.astro";
 import { faqs, links, principles, repos, repoUrl } from "../data/site";
+import IPhone from "../components/IPhone.astro";
+import Insights from "../components/Insights.astro";
+import ScreenGallery from "../components/ScreenGallery.astro";
 ---
 
 <Base>
@@ -220,6 +223,10 @@ import { faqs, links, principles, repos, repoUrl } from "../data/site";
     </div>
   </section>
 
+  <ScreenGallery />
+
+  <Insights />
+
   <section id="how" class="section section-alt" aria-labelledby="how-title">
     <div class="container">
       <div class="section-head">
@@ -308,16 +315,14 @@ import { faqs, links, principles, repos, repoUrl } from "../data/site";
       </div>
       <p class="privacy-foot">
         No ads, no analytics, no third-party trackers, in the app or on this
-        site. <a href={withBase("/privacy/")}>Read the privacy summary</a>.
+        site. <a href={withBase("/privacy/")}>Read the privacy policy</a>.
       </p>
     </div>
   </section>
 
-  <section
-    id="beliefs"
-    class="section section-alt"
-    aria-labelledby="beliefs-title"
-  >
+  <IPhone />
+
+  <section id="beliefs" class="section" aria-labelledby="beliefs-title">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">What we believe</p>
@@ -794,29 +799,6 @@ import { faqs, links, principles, repos, repoUrl } from "../data/site";
     border-top: 0;
   }
 
-  .section-alt {
-    background: var(--color-surface);
-    border-block: 1px solid var(--color-border);
-  }
-
-  .section-head {
-    max-width: 44rem;
-    margin-bottom: var(--space-7);
-  }
-
-  .section-head h2 {
-    font-size: var(--text-section);
-    letter-spacing: -0.03em;
-    line-height: 1.08;
-    margin-bottom: var(--space-4);
-  }
-
-  .section-head > p:last-child {
-    margin: 0;
-    font-size: var(--text-lg);
-    color: var(--color-text-muted);
-  }
-
   /* Bento */
   .bento {
     display: grid;
@@ -1165,7 +1147,7 @@ import { faqs, links, principles, repos, repoUrl } from "../data/site";
   .principle {
     padding: var(--space-5);
     border-radius: var(--radius-large);
-    background: var(--color-background);
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
   }
 

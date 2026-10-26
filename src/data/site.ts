@@ -14,8 +14,6 @@ export const links = {
   github: org,
   // A GitHub issue form on this public repo until a non-GitHub waitlist exists.
   waitlist: `${org}/pesaclarity-web/issues/new?template=beta-waitlist.yml`,
-  spec: `${org}/docs/blob/main/spec/PRODUCT-SPEC.md`,
-  specPrivacy: `${org}/docs/blob/main/spec/PRODUCT-SPEC.md#architecture-privacy-and-data-model`,
   brand: `${org}/docs/blob/main/BRAND.md`,
   contributing: `${org}/pesaclarity-web/blob/main/CONTRIBUTING.md`,
   parserContributing: `${org}/ujumbe-parsers/blob/main/CONTRIBUTING.md`,
@@ -105,9 +103,6 @@ export const repos: readonly Repo[] = [
   },
 ];
 
-/** The product spec lives in the docs repo; link to it only once that is public. */
-export const specPublic = repos.find((r) => r.name === "docs")?.public ?? false;
-
 export const repoUrl = (name: string): string => `${org}/${name}`;
 
 export interface Faq {
@@ -130,7 +125,7 @@ export const faqs: readonly Faq[] = [
   },
   {
     q: "Does it work on iPhone?",
-    a: "Not yet. It is Android first because it reads money messages on the phone, which iPhone does not allow.",
+    a: "Not yet. iOS lets no app read SMS, so Android comes first. The iPhone version is planned after the Android beta: it will use Apple's Shortcuts to pass each new money message to the app, with statement imports as a backup, and still keep everything on the phone.",
   },
   {
     q: "Which banks and wallets are supported?",
