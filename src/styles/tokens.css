@@ -21,6 +21,14 @@
   --color-warning: #b45309;
   --color-focus: #b81d2f;
 
+  /* Dark band used for the privacy section in both themes. */
+  --color-ink: #1c1215;
+  --color-ink-surface: #2a1d21;
+  --color-ink-border: #3d2e32;
+  --color-on-ink: #fbf8f8;
+  --color-on-ink-muted: #c9bcc0;
+  --color-on-ink-accent: #ff8592;
+
   /* The logo mark is never recoloured, so it keeps its own token. */
   --color-mark: #c8102e;
   --color-on-mark: #ffffff;
@@ -41,16 +49,16 @@
   --space-5: 1.5rem;
   --space-6: 2rem;
   --space-7: 3rem;
-  --space-8: 4.5rem;
+  --space-8: 4rem;
 
   --text-sm: 0.9375rem;
   --text-base: 1.0625rem;
   --text-lg: 1.25rem;
   --text-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
-  --text-2xl: clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem);
+  --text-2xl: clamp(2.2rem, 1.4rem + 3.2vw, 3.9rem);
   --text-number: clamp(3rem, 2.2rem + 3vw, 4.25rem);
 
-  --width-content: 72rem;
+  --width-content: 76rem;
   --width-prose: 42rem;
   --gutter: clamp(1rem, 4vw, 2rem);
 }
@@ -70,5 +78,7 @@
     --color-success-text: #6ee7b7;
     --color-warning: #fbbf24;
     --color-focus: #ff8592;
+    --color-ink: #120c0e;
+    --color-ink-surface: #221a1d;
   }
 }
