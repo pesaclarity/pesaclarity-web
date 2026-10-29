@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import { links } from "../data/site";
 
-const updated = "27 October 2026";
+const updated = "29 October 2026";
 ---
 
 <Base
@@ -29,6 +29,11 @@ const updated = "27 October 2026";
           other sender are ignored and never stored.
         </li>
         <li>
+          On iPhone, messages come from a Shortcuts automation you set up. Each
+          one waits in a file only Pesa Clarity can open until the app reads it,
+          for at most 35 days.
+        </li>
+        <li>
           The fields read from those messages: amount, date, payee, balance and
           fee. The raw message text is discarded after reading.
         </li>
@@ -41,7 +46,7 @@ const updated = "27 October 2026";
       <p>
         All of this sits in an encrypted database. The key is held by your
         phone's secure hardware and released only after you unlock the app with
-        your PIN or fingerprint.
+        your PIN, fingerprint or Face ID.
       </p>
 
       <h2>What our server holds</h2>
@@ -56,8 +61,10 @@ const updated = "27 October 2026";
         <dd>
           If you choose our vault, backups are encrypted on your phone with your
           passphrase before upload. We hold only the encrypted file and cannot
-          read it. You can back up to your own Google Drive, your phone or an SD
-          card instead.
+          read it. The server checks with Google (Android) or Apple (iPhone)
+          that each backup comes from the genuine app; neither sees the backup.
+          You can back up to your own Google Drive, your phone, an SD card or
+          Files on iPhone instead.
         </dd>
         <dt>Model updates</dt>
         <dd>
