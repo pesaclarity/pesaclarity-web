@@ -25,7 +25,12 @@ const pages = htmlFiles(dist).map((path) => ({
 
 test("builds the expected pages", () => {
   const names = pages.map((p) => p.name).sort();
-  assert.deepEqual(names, ["404.html", "index.html", "privacy/index.html"]);
+  assert.deepEqual(names, [
+    "404.html",
+    "index.html",
+    "privacy/index.html",
+    "terms/index.html",
+  ]);
 });
 
 for (const { name, html } of pages) {
@@ -88,7 +93,11 @@ test("sitemap lists the public pages and not the 404", () => {
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
     (m) => new URL(m[1]).pathname,
   );
-  assert.deepEqual(locs.sort(), [`${base}/`, `${base}/privacy/`]);
+  assert.deepEqual(locs.sort(), [
+    `${base}/`,
+    `${base}/privacy/`,
+    `${base}/terms/`,
+  ]);
   assert.match(
     readFileSync(join(dist, "robots.txt"), "utf8"),
     /Sitemap: https?:\/\/\S+\/sitemap-index\.xml/,
