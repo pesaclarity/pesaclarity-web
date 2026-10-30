@@ -35,7 +35,7 @@ src/styles/global.css  base styles and shared classes
 src/data/site.ts     links, the five principles and the repository list
 src/components/      header, footer, logo mark
 src/layouts/Base.astro  page shell: SEO and Open Graph meta, fonts, skip link
-src/pages/           index (one-page landing), privacy (draft summary), 404, robots.txt
+src/pages/           index (one-page landing), privacy, terms, 404, robots.txt
 tests/               checks on the built output
 ```
 
