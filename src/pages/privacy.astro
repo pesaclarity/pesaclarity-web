@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import { links } from "../data/site";
 
-const updated = "29 October 2026";
+const updated = "30 October 2026";
 ---
 
 <Base
@@ -18,8 +18,8 @@ const updated = "29 October 2026";
       <h2>The short version</h2>
       <p>
         Pesa Clarity works out your budget on your phone. Your transactions,
-        messages and statements never leave it. Our server does three narrow
-        jobs and never sees a transaction.
+        messages and statements stay on it. Our server does three narrow jobs
+        and never sees a transaction.
       </p>
 
       <h2>What stays on your phone</h2>
@@ -35,7 +35,18 @@ const updated = "29 October 2026";
         </li>
         <li>
           The fields read from those messages: amount, date, payee, balance and
-          fee. The raw message text is discarded after reading.
+          fee. Once a message is read, its text is deleted.
+        </li>
+        <li>
+          Messages the app is still learning. They wait in Messages to check
+          until you check them, then their text is deleted. The suggestions come
+          from a reader that runs on your phone.
+        </li>
+        <li>
+          Layouts you save with "Read messages like this the same way". A layout
+          keeps the message's wording with the amount, payee, date and other
+          details taken out, and numbers reduced to their shape, such as
+          9,999.99.
         </li>
         <li>
           Statement PDFs. Their passwords are used once, in memory, then
@@ -54,17 +65,19 @@ const updated = "29 October 2026";
         <dt>Sign-in</dt>
         <dd>
           Your account id, the email or Google account you sign in with, and
-          when you signed up, in and out. You can also use the app without an
-          account.
+          when you signed up, in and out. One-time sign-in codes are deleted
+          within a day of expiring, and sign-in records after 90 days. You can
+          also use the app without an account.
         </dd>
         <dt>Encrypted backups</dt>
         <dd>
           If you choose our vault, backups are encrypted on your phone with your
           passphrase before upload. We hold only the encrypted file and cannot
-          read it. The server checks with Google (Android) or Apple (iPhone)
-          that each backup comes from the genuine app; neither sees the backup.
-          You can back up to your own Google Drive, your phone, an SD card or
-          Files on iPhone instead.
+          read it. We keep your latest 10 backups and delete older ones. The
+          server checks with Google (Android) or Apple (iPhone) that each backup
+          comes from the genuine app; neither sees the backup. You can back up
+          to your own Google Drive, your phone, an SD card or Files on iPhone
+          instead.
         </dd>
         <dt>Model updates</dt>
         <dd>
@@ -73,6 +86,22 @@ const updated = "29 October 2026";
           Never your transactions. You can switch this off at any time.
         </dd>
       </dl>
+
+      <h2>Who runs our server</h2>
+      <p>
+        These services run it for us and process data only on our instructions:
+      </p>
+      <ul>
+        <li>Google Cloud runs the server.</li>
+        <li>Neon stores sign-in data in its database.</li>
+        <li>Cloudflare R2 stores encrypted backups.</li>
+        <li>Brevo sends sign-in codes by email.</li>
+      </ul>
+      <p>
+        Some of them store data outside Kenya. We use them under their data
+        processing terms, as the Kenya Data Protection Act 2019 requires for
+        transfers abroad.
+      </p>
 
       <h2>Exchange rates</h2>
       <p>
@@ -91,13 +120,23 @@ const updated = "29 October 2026";
       </ul>
       <p>Pesa Clarity has no ads, no analytics and no third-party trackers.</p>
 
+      <h2>Keeping it safe</h2>
+      <p>
+        Data on your phone is encrypted, and everything sent to our server
+        travels over an encrypted connection. Deleting your account removes your
+        account, sign-in records and vault backups from our server.
+      </p>
+
       <h2>Your rights</h2>
       <p>
         Under the Kenya Data Protection Act 2019 you can ask to see, correct or
-        delete the data we hold about you, and object to automated decisions. We
-        will answer within 30 days. You can delete your account from inside the
-        app.
+        delete the data we hold about you, take a copy with you, and object to
+        how it is used or to automated decisions. We will answer within 30 days.
+        You can delete your account from inside the app. If you are unhappy with
+        our answer, you can complain to the Office of the Data Protection
+        Commissioner (<a href="https://www.odpc.go.ke">odpc.go.ke</a>).
       </p>
+      <p>Pesa Clarity is for people aged 18 and over.</p>
 
       <h2>This website</h2>
       <p>
@@ -106,10 +145,17 @@ const updated = "29 October 2026";
         standard request logs, such as IP address and time, for security.
       </p>
 
+      <h2>Changes</h2>
+      <p>
+        When this policy changes, the app shows what changed and asks you to
+        read it before you carry on.
+      </p>
+
       <h2>Questions</h2>
       <p>
         {/* TODO: add the data protection contact once the controller is registered with the ODPC. */}
-        Ask in public on <a href={links.github}>GitHub</a>, or report a security
+        Ask in public on GitHub (
+        <a href={links.github}>github.com/pesaclarity</a>), or report a security
         issue privately using the security policy there.
       </p>
     </div>
