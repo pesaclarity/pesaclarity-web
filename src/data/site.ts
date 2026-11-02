@@ -12,13 +12,27 @@ export const site = {
 
 export const links = {
   github: org,
-  // A GitHub issue form on this public repo until a non-GitHub waitlist exists.
-  waitlist: `${org}/pesaclarity-web/issues/new?template=beta-waitlist.yml`,
+  releases: `${org}/pesaclarity-app/releases`,
   brand: `${org}/docs/blob/main/BRAND.md`,
   contributing: `${org}/pesaclarity-web/blob/main/CONTRIBUTING.md`,
   parserContributing: `${org}/ujumbe-parsers/blob/main/CONTRIBUTING.md`,
   parserIssues: `${org}/ujumbe-parsers/issues`,
   webSource: `${org}/pesaclarity-web`,
+} as const;
+
+// The app release the download buttons point to: a tag such as v0.2.0, or
+// "latest" for the newest full release. Until the first one, the test build.
+const releaseTag = import.meta.env.APP_RELEASE_TAG || "test-build";
+const releaseFiles =
+  releaseTag === "latest"
+    ? `${links.releases}/latest/download`
+    : `${links.releases}/download/${releaseTag}`;
+
+/** APKs on the app's GitHub Releases, one per flavour. */
+export const downloads = {
+  android: `${releaseFiles}/pesaclarity-play.apk`,
+  fdroid: `${releaseFiles}/pesaclarity-foss.apk`,
+  testBuild: releaseTag === "test-build",
 } as const;
 
 export interface Faq {
@@ -31,5 +45,9 @@ export const faqs: readonly Faq[] = [
   { q: "Does it need my PIN?", a: "It reads only your SMS." },
   { q: "Who sees my money?", a: "Only you." },
   { q: "iPhone?", a: "Coming after the Android beta." },
-  { q: "When can I start?", a: "Join the waitlist." },
+  { q: "When can I start?", a: "Today. Download it for Android." },
+  {
+    q: "Which download?",
+    a: "Android has Google sign-in. F-Droid has no Google services.",
+  },
 ];

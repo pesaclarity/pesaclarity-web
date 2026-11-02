@@ -1,7 +1,7 @@
 ---
 import { withBase } from "../lib/paths";
 import Mark from "./Mark.astro";
-import { links } from "../data/site";
+import { downloads } from "../data/site";
 
 interface Props {
   onHome: boolean;
@@ -33,8 +33,8 @@ const nav = [
           </li>
         ))}
         <li>
-          <a class="button button-primary nav-cta" href={links.waitlist}>
-            Join the waitlist
+          <a class="button button-primary nav-cta" href={downloads.android}>
+            Download
           </a>
         </li>
       </ul>

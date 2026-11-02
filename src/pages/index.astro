@@ -2,7 +2,7 @@
 import { withBase } from "../lib/paths";
 import Base from "../layouts/Base.astro";
 import ScreenGallery from "../components/ScreenGallery.astro";
-import { faqs, links } from "../data/site";
+import { downloads, faqs, links } from "../data/site";
 
 const highlights = [
   "Free forever",
@@ -46,8 +46,11 @@ const steps = [
           private, and on your phone.
         </p>
         <div class="button-row">
-          <a class="button button-primary button-large" href={links.waitlist}>
-            Join the waitlist
+          <a
+            class="button button-primary button-large"
+            href={downloads.android}
+          >
+            Download for Android
           </a>
           <a class="button button-secondary button-large" href="#how">
             How it works
@@ -182,13 +185,29 @@ const steps = [
     </div>
   </section>
 
-  <section id="join" class="section" aria-labelledby="join-title">
+  <section id="download" class="section" aria-labelledby="download-title">
     <div class="container">
       <div class="cta">
-        <h2 id="join-title">Be first to try it.</h2>
-        <a class="button button-primary button-large" href={links.waitlist}>
-          Join the waitlist
-        </a>
+        <h2 id="download-title">Get the app.</h2>
+        <div class="button-row">
+          <a
+            class="button button-primary button-large"
+            href={downloads.android}
+          >
+            Android
+          </a>
+          <a
+            class="button button-secondary button-large"
+            href={downloads.fdroid}
+          >
+            F-Droid build
+          </a>
+        </div>
+        <p class="muted">
+          {downloads.testBuild ? "Test build, updated often. " : ""}Open the
+          file on your phone and allow installs when asked.{" "}
+          <a href={links.releases}>All releases</a>
+        </p>
       </div>
     </div>
   </section>

@@ -45,7 +45,7 @@ Design follows [BRAND.md](https://github.com/pesaclarity/docs/blob/main/BRAND.md
 
 `SITE_URL` sets the absolute URL used for canonical links, Open Graph and the sitemap. The domain is not decided yet, so it defaults to `https://pesaclarity.github.io`. See `.env.example`.
 
-The beta waitlist link points to GitHub Discussions on the organisation until a real waitlist exists; change `links.waitlist` in `src/data/site.ts`.
+The download buttons point to the app's APKs on GitHub Releases (`downloads` in `src/data/site.ts`). They use the `test-build` pre-release until the first full release; set `APP_RELEASE_TAG` at build time to a tag such as `v0.2.0`, or `latest`, to change that.
 
 ## Deploying
 
