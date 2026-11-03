@@ -57,6 +57,13 @@ The build is plain static files in `dist/` served from the site root, so any sta
 
 Most hosts serve `404.html` for missing paths automatically.
 
+## Get involved
+
+- **Star [the app](https://github.com/pesaclarity/pesaclarity-app)** so more people find a private money app that runs on their phone.
+- Help with copy, accessibility and Swahili translations is welcome.
+- **Pick a first issue:** [good first issues](https://github.com/pesaclarity/pesaclarity-web/issues?q=is%3Aopen+label%3A%22good+first+issue%22) or [help wanted](https://github.com/pesaclarity/pesaclarity-web/issues?q=is%3Aopen+label%3A%22help+wanted%22).
+- **Read [CONTRIBUTING.md](CONTRIBUTING.md)** before your first pull request. Never include real messages, statements or phone numbers.
+
 ## Licence
 
 - Code: [AGPL-3.0](LICENSE).
