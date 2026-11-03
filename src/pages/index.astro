@@ -2,7 +2,13 @@
 import { withBase } from "../lib/paths";
 import Base from "../layouts/Base.astro";
 import ScreenGallery from "../components/ScreenGallery.astro";
-import { downloads, faqs, links } from "../data/site";
+import { downloads, faqs, links, releaseTag } from "../data/site";
+import { fetchAppRelease, formatDay } from "../data/release.mjs";
+
+const release = await fetchAppRelease(releaseTag, {
+  token: import.meta.env.GITHUB_TOKEN,
+});
+const releaseDay = release ? formatDay(release.date) : null;
 
 const highlights = [
   "Free forever",
@@ -210,7 +216,10 @@ const steps = [
             F-Droid build
           </a>
         </div>
-        <p class="muted">
+        <p class="muted" data-version={release?.version}>
+          {release
+            ? `Version ${release.version}${releaseDay ? `, ${releaseDay}` : ""}. `
+            : ""}
           {downloads.testBuild ? "Test build, updated often. " : ""}Open the
           file on your phone and allow installs when asked.{" "}
           <a href={links.releases}>All releases</a>

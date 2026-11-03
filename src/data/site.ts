@@ -26,7 +26,8 @@ export const links = {
 
 // The app release the download buttons point to: a tag such as v0.2.0, or
 // "latest" for the newest full release. Until the first one, the test build.
-const releaseTag = import.meta.env.APP_RELEASE_TAG || "test-build";
+export const releaseTag: string =
+  import.meta.env.APP_RELEASE_TAG || "test-build";
 const releaseFiles =
   releaseTag === "latest"
     ? `${links.releases}/latest/download`

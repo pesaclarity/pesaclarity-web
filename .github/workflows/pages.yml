@@ -8,6 +8,10 @@ on:
       - LICENSE
       - .github/ISSUE_TEMPLATE/**
   workflow_dispatch:
+  # The app's APK workflow sends this after it publishes a build, so the
+  # version under the download buttons is the one people get.
+  repository_dispatch:
+    types: [app-build]
 
 permissions:
   contents: read
@@ -39,6 +43,8 @@ jobs:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
           # Which app release the download buttons use; empty means test-build.
           APP_RELEASE_TAG: ${{ vars.APP_RELEASE_TAG }}
+          # Reads that release's version for the page (public data).
+          GITHUB_TOKEN: ${{ github.token }}
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
