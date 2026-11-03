@@ -17,6 +17,8 @@ export const links = {
   star: `${org}/pesaclarity-app`,
   brand: `${org}/docs/blob/main/BRAND.md`,
   contributing: `${org}/pesaclarity-web/blob/main/CONTRIBUTING.md`,
+  // The guide every repo shares.
+  contribute: `${org}/.github/blob/main/CONTRIBUTING.md`,
   parserContributing: `${org}/ujumbe-parsers/blob/main/CONTRIBUTING.md`,
   parserIssues: `${org}/ujumbe-parsers/issues`,
   webSource: `${org}/pesaclarity-web`,
