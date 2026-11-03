@@ -20,6 +20,8 @@ const does = [
 
 const features = [
   "Your money summary in a minute",
+  "What changed this month",
+  "Tap any figure to see why",
   "Early warning before you run low",
   "A payday plan",
   "A money health score",
@@ -28,7 +30,7 @@ const features = [
 ];
 
 const steps = [
-  "Pick your banks and M-Pesa",
+  "Pick your accounts and how far back",
   "The app reads those SMS on your phone",
   "Get your plan",
 ];
@@ -158,6 +160,9 @@ const steps = [
       <div>
         <p class="statement">The code is public. Check it, or add your bank.</p>
         <div class="button-row">
+          <a class="button button-primary" href={links.star}>
+            Star on GitHub
+          </a>
           <a class="button button-secondary" href={links.github}>
             GitHub
           </a>
