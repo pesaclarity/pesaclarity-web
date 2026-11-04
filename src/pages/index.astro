@@ -35,6 +35,15 @@ const features = [
   "Who owes who",
 ];
 
+const supported = [
+  "M-Pesa",
+  "Airtel Money",
+  "Equity Bank",
+  "I&M Bank",
+  "KCB Bank",
+  "NCBA Loop",
+]
+
 const steps = [
   "Pick your accounts and how far back",
   "The app reads those SMS on your phone",
@@ -136,6 +145,22 @@ const steps = [
       </ol>
     </div>
   </section>
+
+    <section id="supported" class="section" aria-labelledby="supported-title">
+    <div class="container">
+      <h2 id="supported-title" class="label">
+        Supported Accounts
+      </h2>
+      <ul class="cards cards-4" role="list">
+        {supported.map((f) => (
+          <li class="card-item">
+            <h3>{f}</h3>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
 
   <section id="privacy" class="section" aria-labelledby="privacy-title">
     <div class="container split">
