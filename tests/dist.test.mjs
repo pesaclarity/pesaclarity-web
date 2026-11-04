@@ -28,6 +28,7 @@ test("builds the expected pages", () => {
   assert.deepEqual(names, [
     "404.html",
     "index.html",
+    "install/index.html",
     "privacy/index.html",
     "terms/index.html",
   ]);
@@ -95,6 +96,7 @@ test("sitemap lists the public pages and not the 404", () => {
   );
   assert.deepEqual(locs.sort(), [
     `${base}/`,
+    `${base}/install/`,
     `${base}/privacy/`,
     `${base}/terms/`,
   ]);

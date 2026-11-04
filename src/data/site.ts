@@ -13,6 +13,7 @@ export const site = {
 export const links = {
   github: org,
   releases: `${org}/pesaclarity-app/releases`,
+  appIssues: `${org}/pesaclarity-app/issues`,
   // The app repo: the star that shows people the project is alive.
   star: `${org}/pesaclarity-app`,
   brand: `${org}/docs/blob/main/BRAND.md`,
