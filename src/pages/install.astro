@@ -1,0 +1,109 @@
+---
+import Base from "../layouts/Base.astro";
+import { downloads, links } from "../data/site";
+---
+
+<Base
+  title="Install on Android"
+  description="How to install Pesa Clarity from its APK file and let it read your M-Pesa and bank messages."
+>
+  <article class="container install-page">
+    <div class="prose">
+      <p class="eyebrow">Install</p>
+      <h1>Install on Android</h1>
+      <p class="muted">
+        Pesa Clarity is not on Google Play yet, so you install it from a file.
+        It takes a few minutes, once.
+      </p>
+
+      <h2>1. Download the app</h2>
+      <p>
+        On your phone, tap <a href={downloads.android}>Download for Android</a>.
+        If your phone has no Google services, use the{" "}
+        <a href={downloads.fdroid}>F-Droid build</a> instead.
+      </p>
+
+      <h2>2. Allow the install</h2>
+      <ol>
+        <li>Open the downloaded file, from the notification or from Files.</li>
+        <li>
+          If Android says it can't install apps from this source, tap{" "}
+          <strong>Settings</strong>, switch on{" "}
+          <strong>Allow from this source</strong>, then go back.
+        </li>
+        <li>
+          Tap <strong>Install</strong>.
+        </li>
+        <li>
+          If Play Protect shows a warning, tap <strong>More details</strong>,
+          then <strong>Install anyway</strong>. The app is new, so Google does
+          not know it yet; its code is open for anyone to check on{" "}
+          <a href={links.star}>GitHub</a>.
+        </li>
+      </ol>
+
+      <h2>3. Let it read your messages</h2>
+      <p>
+        Open Pesa Clarity, pick your accounts and tap{" "}
+        <strong>Allow access to messages</strong>. If Android asks, choose{" "}
+        <strong>Allow</strong>.
+      </p>
+      <p>
+        On Android 13 and newer, an app installed from a file may not be allowed
+        to read SMS until you say so. If nothing happens, or SMS says{" "}
+        <strong>Restricted setting</strong>:
+      </p>
+      <ol>
+        <li>
+          Open <strong>Settings</strong>, then <strong>Apps</strong>, then{" "}
+          <strong>Pesa Clarity</strong>.
+        </li>
+        <li>
+          Tap <strong>⋮</strong> at the top right, then{" "}
+          <strong>Allow restricted settings</strong>, and confirm with your PIN
+          or fingerprint. On some phones the ⋮ menu is at the bottom of App
+          info.
+        </li>
+        <li>
+          Open <strong>Permissions</strong>, then <strong>SMS</strong>, and
+          choose <strong>Allow</strong>.
+        </li>
+        <li>
+          Back in the app, tap <strong>I have allowed it</strong>, then scan
+          your messages.
+        </li>
+      </ol>
+      <p>
+        Pesa Clarity reads messages only from the accounts you pick, and only on
+        your phone.
+      </p>
+
+      <h2>Updating</h2>
+      <p>
+        Download the newest file the same way and install it over the app you
+        have. Your data stays. Uninstalling first deletes it, and you would need
+        to allow messages again.
+      </p>
+
+      <h2>Still stuck?</h2>
+      <p>
+        <a href={links.appIssues}>Tell us what your phone shows</a>, with its
+        model and Android version, and we will help.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .install-page {
+    padding-block: var(--space-7) var(--space-8);
+  }
+
+  h2 {
+    margin-top: var(--space-6);
+  }
+
+  ol li {
+    margin-block: var(--space-2);
+  }
+</style>
