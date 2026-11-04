@@ -38,6 +38,9 @@ export function formatDay(iso) {
 /**
  * Reads the release for [tag] ("latest", "test-build" or a version tag).
  * A build without network still succeeds: it just shows no version.
+ * @param {string} tag
+ * @param {{ token?: string, fetchImpl?: (url: string, init?: RequestInit) => Promise<any> }} [options]
+ * @returns {Promise<{ version: string, date: string } | null>}
  */
 export async function fetchAppRelease(tag, { token, fetchImpl = fetch } = {}) {
   const url = tag === "latest" ? `${api}/latest` : `${api}/tags/${tag}`;
