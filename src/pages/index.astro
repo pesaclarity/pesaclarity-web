@@ -2,7 +2,16 @@
 import { withBase } from "../lib/paths";
 import Base from "../layouts/Base.astro";
 import ScreenGallery from "../components/ScreenGallery.astro";
-import { accounts, downloads, faqs, links, releaseTag } from "../data/site";
+import {
+  accounts,
+  different,
+  downloadSize,
+  downloads,
+  faqs,
+  links,
+  releaseTag,
+  spaces,
+} from "../data/site";
 import { fetchAppRelease, formatDay } from "../data/release.mjs";
 
 const release = await fetchAppRelease(releaseTag, {
@@ -22,6 +31,10 @@ const does = [
   { title: "Bills", body: "What's due, in good time" },
   { title: "Leaks", body: "Where your money goes" },
   { title: "Debts", body: "Your debt-free date" },
+  { title: "Savings", body: "Goals and a rainy day fund" },
+  { title: "Business", body: "Sales, stock and who owes you" },
+  { title: "Reports", body: "Receipts, invoices and reports" },
+  { title: "Tax", body: "Estimates for your business" },
 ];
 
 const features = [
@@ -50,8 +63,8 @@ const steps = [
           Know where your <span class="accent">pesa</span> goes.
         </h1>
         <p class="lead">
-          Your M-Pesa and bank SMS, turned into a simple daily budget. Free,
-          private, and on your phone.
+          Your M-Pesa and bank SMS, turned into a simple daily plan for you,
+          your home and your business. Free, private, and on your phone.
         </p>
         <div class="button-row">
           <a
@@ -118,6 +131,31 @@ const steps = [
           </li>
         ))}
       </ul>
+      <div class="button-row after-cards">
+        <a class="button button-secondary" href={withBase("/features/")}>
+          See everything it does
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="spaces"
+    class="section section-alt"
+    aria-labelledby="spaces-title"
+  >
+    <div class="container">
+      <h2 id="spaces-title" class="label">
+        A space for each part of life
+      </h2>
+      <ul class="cards cards-4" role="list">
+        {spaces.map((s) => (
+          <li class="card-item">
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -155,6 +193,22 @@ const steps = [
           Add your bank
         </a>
       </div>
+    </div>
+  </section>
+
+  <section id="why" class="section section-alt" aria-labelledby="why-title">
+    <div class="container">
+      <h2 id="why-title" class="label">
+        Why Pesa Clarity
+      </h2>
+      <ul class="cards cards-4" role="list">
+        {different.map((d) => (
+          <li class="card-item">
+            <h3>{d.title}</h3>
+            <p>{d.body}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -241,8 +295,9 @@ const steps = [
           {release
             ? `Version ${release.version}${releaseDay ? `, ${releaseDay}` : ""}. `
             : ""}
-          {downloads.testBuild ? "Test build, updated often. " : ""}Open the
-          file on your phone and allow installs when asked. Older phone? Get the{" "}
+          {downloads.testBuild ? "Test build, updated often. " : ""}
+          {downloadSize}. Open the file on your phone and allow installs when
+          asked. Older phone? Get the{" "}
           <a href={downloads.android32}>version for older phones</a>.{" "}
           <a href={withBase("/install/")}>How to install</a> ·{" "}
           <a href={links.releases}>All releases</a>
@@ -303,11 +358,6 @@ const steps = [
     margin-bottom: var(--space-6);
   }
 
-  .button-large {
-    min-height: 3.25rem;
-    padding-inline: var(--space-6);
-  }
-
   .showcase {
     position: relative;
     margin: 0;
@@ -362,63 +412,6 @@ const steps = [
     }
   }
 
-  /* Sections */
-  .label {
-    font-size: var(--text-section);
-    letter-spacing: -0.03em;
-    line-height: 1.08;
-    margin-bottom: var(--space-6);
-  }
-
-  .cards {
-    display: grid;
-    gap: var(--space-4);
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  @media (min-width: 40rem) {
-    .cards {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (min-width: 62rem) {
-    .cards-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .cards-4 {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-  }
-
-  .card-item {
-    padding: var(--space-6);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-large);
-  }
-
-  .section-alt .card-item {
-    background: var(--color-background);
-  }
-
-  .card-item h3 {
-    font-size: var(--text-lg);
-    margin: 0;
-  }
-
-  .card-item p {
-    margin: var(--space-2) 0 0;
-    color: var(--color-text-muted);
-  }
-
-  .after-cards {
-    margin-top: var(--space-6);
-  }
-
   .step-n {
     display: grid;
     place-items: center;
@@ -429,29 +422,6 @@ const steps = [
     color: var(--color-on-brand);
     font-weight: 700;
     margin-bottom: var(--space-4);
-  }
-
-  .split {
-    display: grid;
-    gap: var(--space-4) var(--space-8);
-    align-items: start;
-  }
-
-  @media (min-width: 62rem) {
-    .split {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
-    }
-
-    .split .label {
-      margin: 0;
-    }
-  }
-
-  .statement {
-    font-family: var(--font-display);
-    font-size: clamp(1.25rem, 1rem + 0.8vw, 1.6rem);
-    line-height: 1.35;
-    margin-bottom: var(--space-5);
   }
 
   /* FAQ */
@@ -498,30 +468,5 @@ const steps = [
     margin: 0;
     padding: 0 var(--space-5) var(--space-5);
     color: var(--color-text-muted);
-  }
-
-  /* Closing call to action */
-  .cta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-5);
-    padding: clamp(2rem, 1rem + 4vw, 4rem);
-    border-radius: var(--radius-large);
-    border: 1px solid var(--color-border);
-    background:
-      radial-gradient(
-        40rem 20rem at 100% 0%,
-        var(--color-brand-soft),
-        transparent 70%
-      ),
-      var(--color-surface);
-  }
-
-  .cta h2 {
-    font-size: var(--text-section);
-    letter-spacing: -0.03em;
-    margin: 0;
   }
 </style>

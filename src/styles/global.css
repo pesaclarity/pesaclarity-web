@@ -239,3 +239,114 @@ code {
 main:focus {
   outline: none;
 }
+
+/* Sections and cards, shared by the home and features pages */
+/* Sections */
+.label {
+  font-size: var(--text-section);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin-bottom: var(--space-6);
+}
+
+.cards {
+  display: grid;
+  gap: var(--space-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 40rem) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 62rem) {
+  .cards-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.card-item {
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-large);
+}
+
+.section-alt .card-item {
+  background: var(--color-background);
+}
+
+.card-item h3 {
+  font-size: var(--text-lg);
+  margin: 0;
+}
+
+.card-item p {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+}
+
+.after-cards {
+  margin-top: var(--space-6);
+}
+
+.split {
+  display: grid;
+  gap: var(--space-4) var(--space-8);
+  align-items: start;
+}
+
+@media (min-width: 62rem) {
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  }
+
+  .split .label {
+    margin: 0;
+  }
+}
+
+.statement {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.6rem);
+  line-height: 1.35;
+  margin-bottom: var(--space-5);
+}
+
+.button-large {
+  min-height: 3.25rem;
+  padding-inline: var(--space-6);
+}
+
+/* Closing call to action */
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: clamp(2rem, 1rem + 4vw, 4rem);
+  border-radius: var(--radius-large);
+  border: 1px solid var(--color-border);
+  background:
+    radial-gradient(
+      40rem 20rem at 100% 0%,
+      var(--color-brand-soft),
+      transparent 70%
+    ),
+    var(--color-surface);
+}
+
+.cta h2 {
+  font-size: var(--text-section);
+  letter-spacing: -0.03em;
+  margin: 0;
+}

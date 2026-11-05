@@ -1,0 +1,102 @@
+---
+import Base from "../layouts/Base.astro";
+import {
+  businessFeatures,
+  different,
+  downloadSize,
+  downloads,
+  lookFeatures,
+  moneyFeatures,
+  spaces,
+  type Item,
+} from "../data/site";
+
+interface Group {
+  id: string;
+  title: string;
+  items: readonly Item[];
+  wide?: boolean;
+}
+
+// Alternate backgrounds, as on the home page.
+const groups: readonly Group[] = [
+  { id: "money", title: "Your money", items: moneyFeatures },
+  {
+    id: "spaces",
+    title: "A space for each part of life",
+    items: spaces,
+    wide: true,
+  },
+  { id: "business", title: "For a business", items: businessFeatures },
+  { id: "look", title: "Your look", items: lookFeatures },
+  { id: "why", title: "Why Pesa Clarity", items: different, wide: true },
+];
+---
+
+<Base
+  title="Everything it does"
+  description="Every Pesa Clarity feature: your money, a space for each part of life, a business side, and how the app looks."
+>
+  <section class="section features-intro" aria-labelledby="page-title">
+    <div class="container">
+      <p class="eyebrow">Features</p>
+      <h1 id="page-title">Everything Pesa Clarity does</h1>
+      <p class="muted">All of it on your phone, free, and in plain English.</p>
+    </div>
+  </section>
+
+  {groups.map((g, i) => (
+    <section
+      id={g.id}
+      class={i % 2 === 0 ? "section section-alt" : "section"}
+      aria-labelledby={`${g.id}-title`}
+    >
+      <div class="container">
+        <h2 id={`${g.id}-title`} class="label">
+          {g.title}
+        </h2>
+        <ul class={g.wide ? "cards cards-4" : "cards cards-3"} role="list">
+          {g.items.map((item) => (
+            <li class="card-item">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  ))}
+
+  <section class="section" aria-labelledby="download-title">
+    <div class="container">
+      <div class="cta">
+        <h2 id="download-title">Get the app.</h2>
+        <div class="button-row">
+          <a
+            class="button button-primary button-large"
+            href={downloads.android}
+          >
+            Android
+          </a>
+          <a
+            class="button button-secondary button-large"
+            href={downloads.fdroid}
+          >
+            F-Droid build
+          </a>
+        </div>
+        <p class="muted">{downloadSize}.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .features-intro {
+    padding-block: var(--space-7) var(--space-6);
+  }
+
+  .features-intro p:last-child {
+    margin: 0;
+  }
+</style>
