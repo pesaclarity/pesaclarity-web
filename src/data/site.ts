@@ -22,6 +22,8 @@ export const links = {
   contribute: `${org}/.github/blob/main/CONTRIBUTING.md`,
   parserContributing: `${org}/ujumbe-parsers/blob/main/CONTRIBUTING.md`,
   parserIssues: `${org}/ujumbe-parsers/issues`,
+  // Where the message rules live, so anyone can add their bank.
+  parsers: `${org}/ujumbe-parsers`,
   webSource: `${org}/pesaclarity-web`,
 } as const;
 
@@ -45,6 +47,25 @@ export const downloads = {
   fdroid32: `${releaseFiles}/pesaclarity-foss-32bit.apk`,
   testBuild: releaseTag === "test-build",
 } as const;
+
+export interface Account {
+  name: string;
+  /** Shown under the name, for accounts that still need a hand. */
+  note?: string;
+}
+
+const learning =
+  "You check new messages once while the app learns their wording.";
+
+/** Banks and wallets whose SMS the app reads. */
+export const accounts: readonly Account[] = [
+  { name: "M-Pesa" },
+  { name: "Airtel Money", note: learning },
+  { name: "Equity Bank" },
+  { name: "I&M Bank" },
+  { name: "KCB" },
+  { name: "Loop", note: learning },
+];
 
 export interface Faq {
   q: string;

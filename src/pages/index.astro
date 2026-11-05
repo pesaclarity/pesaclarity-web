@@ -2,7 +2,7 @@
 import { withBase } from "../lib/paths";
 import Base from "../layouts/Base.astro";
 import ScreenGallery from "../components/ScreenGallery.astro";
-import { downloads, faqs, links, releaseTag } from "../data/site";
+import { accounts, downloads, faqs, links, releaseTag } from "../data/site";
 import { fetchAppRelease, formatDay } from "../data/release.mjs";
 
 const release = await fetchAppRelease(releaseTag, {
@@ -134,6 +134,27 @@ const steps = [
           </li>
         ))}
       </ol>
+    </div>
+  </section>
+
+  <section id="works-with" class="section" aria-labelledby="works-title">
+    <div class="container">
+      <h2 id="works-title" class="label">
+        Works with
+      </h2>
+      <ul class="cards cards-3" role="list">
+        {accounts.map((a) => (
+          <li class="card-item">
+            <h3>{a.name}</h3>
+            {a.note && <p>{a.note}</p>}
+          </li>
+        ))}
+      </ul>
+      <div class="button-row after-cards">
+        <a class="button button-secondary" href={links.parsers}>
+          Add your bank
+        </a>
+      </div>
     </div>
   </section>
 
@@ -392,6 +413,10 @@ const steps = [
   .card-item p {
     margin: var(--space-2) 0 0;
     color: var(--color-text-muted);
+  }
+
+  .after-cards {
+    margin-top: var(--space-6);
   }
 
   .step-n {
