@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { links } from "../data/site";
+import { dpo, links } from "../data/site";
 
 const updated = "5 November 2026";
 ---
@@ -146,10 +146,13 @@ const updated = "5 November 2026";
       <p>
         Under the Kenya Data Protection Act 2019 you can ask to see, correct or
         delete the data we hold about you, take a copy with you, and object to
-        how it is used or to automated decisions. We will answer within 30 days.
-        You can delete your account from inside the app. If you are unhappy with
-        our answer, you can complain to the Office of the Data Protection
-        Commissioner (<a href="https://www.odpc.go.ke">odpc.go.ke</a>).
+        how it is used or to automated decisions. To ask, write to our Data
+        Protection Officer, {dpo.name}, at{" "}
+        <a href={`mailto:${dpo.email}`}>{dpo.email}</a>. We will answer within
+        30 days. You can delete your account from inside the app. If you are
+        unhappy with our answer, you can complain to the Office of the Data
+        Protection Commissioner (<a href="https://www.odpc.go.ke">odpc.go.ke</a>
+        ).
       </p>
       <p>Pesa Clarity is for people aged 18 and over.</p>
 
@@ -168,10 +171,10 @@ const updated = "5 November 2026";
 
       <h2>Questions</h2>
       <p>
-        {/* TODO: add the data protection contact once the controller is registered with the ODPC. */}
-        Ask in public on GitHub (
-        <a href={links.github}>github.com/pesaclarity</a>), or report a security
-        issue privately using the security policy there.
+        Write to our Data Protection Officer, {dpo.name}, at{" "}
+        <a href={`mailto:${dpo.email}`}>{dpo.email}</a>. You can also ask in
+        public on GitHub (<a href={links.github}>github.com/pesaclarity</a>), or
+        report a security issue privately using the security policy there.
       </p>
     </div>
   </article>

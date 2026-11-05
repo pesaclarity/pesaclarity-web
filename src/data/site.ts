@@ -10,6 +10,12 @@ export const site = {
   locale: "en_KE",
 } as const;
 
+/** Who answers data protection requests, as the privacy policy names them. */
+export const dpo = {
+  name: "Dan Njuguna",
+  email: "njugunahdann@gmail.com",
+} as const;
+
 export const links = {
   github: org,
   releases: `${org}/pesaclarity-app/releases`,
