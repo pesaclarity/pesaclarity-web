@@ -34,10 +34,15 @@ const releaseFiles =
     ? `${links.releases}/latest/download`
     : `${links.releases}/download/${releaseTag}`;
 
-/** APKs on the app's GitHub Releases, one per flavour. */
+/**
+ * APKs on the app's GitHub Releases, one per flavour and chip: the plain
+ * name is for most phones (64-bit), `-32bit` for older ones.
+ */
 export const downloads = {
   android: `${releaseFiles}/pesaclarity-play.apk`,
+  android32: `${releaseFiles}/pesaclarity-play-32bit.apk`,
   fdroid: `${releaseFiles}/pesaclarity-foss.apk`,
+  fdroid32: `${releaseFiles}/pesaclarity-foss-32bit.apk`,
   testBuild: releaseTag === "test-build",
 } as const;
 
